@@ -28,7 +28,6 @@
                     <div class="max-w-sm mx-auto px-4 py-8">
 
                         <h1 class="text-3xl text-slate-800 font-bold mb-6">
-                            {{ $empresa->extra['texto_superior_login'] }}! ✨
                         </h1>
                         <!-- Form -->
                         <x-validation-errors class="mb-4" />

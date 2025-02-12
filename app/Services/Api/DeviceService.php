@@ -119,12 +119,12 @@ class DeviceService
             $unitServices[$service] = ['active' => false];
         }
 
-        // Obtener todos los dispositivos existentes para la cuenta
-        $existingDevices = Devices::where('account_id', $accountId)->get()->keyBy('imei');
+
 
         foreach ($devices as $device) {
 
-            $existingDevice = $existingDevices->get($device['imei']);
+
+            $existingDevice = Devices::where('imei', $device['imei'])->first();
 
             if ($existingDevice) {
                 // Solo actualizar los campos permitidos
@@ -134,7 +134,7 @@ class DeviceService
                     'name' => $device['deviceName'] ?? null,
                 ]);
                 // Eliminar el dispositivo de la lista de dispositivos existentes
-                $existingDevices->forget($device['imei']);
+
             } else {
                 // Crear un nuevo dispositivo con todos los campos
                 Log::info("Creando nuevo dispositivo: " . json_encode($device));
@@ -152,11 +152,6 @@ class DeviceService
                     'url_image' => null,
                 ]);
             }
-        }
-
-        // Eliminar los dispositivos que no están en la lista de dispositivos recibidos de la API
-        foreach ($existingDevices as $device) {
-            $device->delete();
         }
     }
 }

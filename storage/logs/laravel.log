@@ -1,94 +1,394 @@
-[2025-02-12 08:49:35] local.ERROR: Error al conectar con la API de estado de dispositivos {"message":"cURL error 28: Operation timed out after 10013 milliseconds with 0 bytes received (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://open.iopgps.com/api/device/status?accessToken=a00c8013654c40549382ce5e5a5f510b&imei=000000007520645,000000007979028,350317174165740,350424068146420,358899057024229,358899057055967,865468050805897,865468051205253,865468051898461,865468051900812"} 
-[2025-02-12 08:49:43] local.INFO: Procesando unidades:{"error":"Error al conectar con la API","code":0,"data":[{"imei":"865468051205527","status":"\u9759\u6b62","location":{"lng":"-78.569249","lat":"-9.077421"},"speed":0,"course":278,"accStatus":false,"licenseNumber":null,"endTime":1752641999,"platformEndTime":1754255706,"activateTime":1722716275,"statusTimeDesc":"4\u65f633\u520617\u79d2","signalTime":1739367961,"gpsTime":1739352063,"positionType":"GPS","isWireless":0,"account":{"accountId":10440349,"accountName":"PELAEST","userName":"NELSON E. SANCHEZ MU\u00d1OZ"}},{"imei":"865468051072158","status":"\u9759\u6b62","location":{"lng":"-79.097468","lat":"-8.088716"},"speed":0,"course":201,"accStatus":false,"licenseNumber":"BCK-237","endTime":1757884795,"platformEndTime":1757872216,"activateTime":1726331031,"statusTimeDesc":"1\u65f651\u520653\u79d2","signalTime":1739368167,"gpsTime":1739361281,"positionType":"GPS","isWireless":0,"account":{"accountId":10460321,"accountName":"JHFERAY","userName":"JHOAN F. OLIVO AYALA"}},{"imei":"865468051205162","status":"\u9759\u6b62","location":{"lng":"-78.583656","lat":"-9.068421"},"speed":0,"course":259,"accStatus":false,"licenseNumber":"H3G-800","endTime":1751587506,"platformEndTime":1751587506,"activateTime":1720046302,"statusTimeDesc":"59\u52066\u79d2","signalTime":1739368181,"gpsTime":1739368177,"positionType":"GPS","isWireless":0,"account":{"accountId":10426434,"accountName":"LEOAMR","userName":"ARMANDO LEON CABANILLAS"}},{"imei":"869671071357279","status":"\u9759\u6b62","location":{"lng":"-78.5362133","lat":"-9.1067266"},"speed":0,"course":29,"accStatus":false,"licenseNumber":"H1N-201","endTime":1758612014,"platformEndTime":1758612014,"activateTime":1727072107,"statusTimeDesc":"6\u65f638\u520658\u79d2","signalTime":1739368103,"gpsTime":1739368103,"positionType":"GPS","isWireless":0,"account":{"accountId":10494259,"accountName":"ANTOBRIGE","userName":"ANTONELLA B. GARCIA ENCINAS"}},{"imei":"865468051205303","status":"\u9759\u6b62","location":{"lng":"-78.589972","lat":"-9.068821"},"speed":9,"course":21,"accStatus":false,"licenseNumber":"AWN-297","endTime":1756408509,"platformEndTime":1756408509,"activateTime":1724852937,"statusTimeDesc":"12\u65f617\u520624\u79d2","signalTime":1739367887,"gpsTime":1739323758,"positionType":"GPS","isWireless":0,"account":{"accountId":10453422,"accountName":"MPAREP","userName":"MARIELA K. PAREDES PIZARRO"}},{"imei":"000009175587200","status":"\u9759\u6b62","location":{"lng":"-78.586498","lat":"-9.079328"},"speed":0,"course":194,"accStatus":false,"licenseNumber":"H3H-668","endTime":1769181907,"platformEndTime":1769181907,"activateTime":1737640574,"statusTimeDesc":"2\u65f634\u520656\u79d2","signalTime":1739368113,"gpsTime":1739368113,"positionType":"GPS","isWireless":0,"account":{"accountId":10504004,"accountName":"USTJAM","userName":"EUSTAQUIO J. ARIAS MORALES"}},{"imei":"000009175587213","status":"\u9759\u6b62","location":{"lng":"-78.581402","lat":"-9.073452"},"speed":0,"course":11,"accStatus":false,"licenseNumber":"H2R-560","endTime":1769101223,"platformEndTime":1769101223,"activateTime":1737549758,"statusTimeDesc":"47\u520653\u79d2","signalTime":1739368178,"gpsTime":1739368178,"positionType":"GPS","isWireless":0,"account":{"accountId":10504004,"accountName":"USTJAM","userName":"EUSTAQUIO J. ARIAS MORALES"}}]}  
-[2025-02-12 08:49:43] local.INFO: Procesando unidad: 865468051072158-3.0166666666667  
-[2025-02-12 08:51:22] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"865468051205527","status":"\u9759\u6b62","location":{"lng":"-78.569249","lat":"-9.077421"},"speed":0,"course":278,"accStatus":false,"licenseNumber":null,"endTime":1752641999,"platformEndTime":1754255706,"activateTime":1722716275,"statusTimeDesc":"4\u65f634\u520655\u79d2","signalTime":1739368262,"gpsTime":1739352063,"positionType":"GPS","isWireless":0,"account":{"accountId":10440349,"accountName":"PELAEST","userName":"NELSON E. SANCHEZ MU\u00d1OZ"}},{"imei":"865468051072158","status":"\u9759\u6b62","location":{"lng":"-79.097481","lat":"-8.088745"},"speed":0,"course":200,"accStatus":false,"licenseNumber":"BCK-237","endTime":1757884795,"platformEndTime":1757872216,"activateTime":1726331031,"statusTimeDesc":"1\u65f653\u520631\u79d2","signalTime":1739368214,"gpsTime":1739368214,"positionType":"GPS","isWireless":0,"account":{"accountId":10460321,"accountName":"JHFERAY","userName":"JHOAN F. OLIVO AYALA"}},{"imei":"865468051205162","status":"\u9759\u6b62","location":{"lng":"-78.583689","lat":"-9.068414"},"speed":0,"course":0,"accStatus":false,"licenseNumber":"H3G-800","endTime":1751587506,"platformEndTime":1751587506,"activateTime":1720046302,"statusTimeDesc":"1\u65f644\u79d2","signalTime":1739368267,"gpsTime":1739368267,"positionType":"GPS","isWireless":0,"account":{"accountId":10426434,"accountName":"LEOAMR","userName":"ARMANDO LEON CABANILLAS"}},{"imei":"869671071357279","status":"\u9759\u6b62","location":{"lng":"-78.5362133","lat":"-9.1067266"},"speed":0,"course":29,"accStatus":false,"licenseNumber":"H1N-201","endTime":1758612014,"platformEndTime":1758612014,"activateTime":1727072107,"statusTimeDesc":"6\u65f640\u520636\u79d2","signalTime":1739368103,"gpsTime":1739368103,"positionType":"GPS","isWireless":0,"account":{"accountId":10494259,"accountName":"ANTOBRIGE","userName":"ANTONELLA B. GARCIA ENCINAS"}},{"imei":"865468051205303","status":"\u9759\u6b62","location":{"lng":"-78.589972","lat":"-9.068821"},"speed":9,"course":21,"accStatus":false,"licenseNumber":"AWN-297","endTime":1756408509,"platformEndTime":1756408509,"activateTime":1724852937,"statusTimeDesc":"12\u65f619\u52062\u79d2","signalTime":1739368189,"gpsTime":1739323758,"positionType":"GPS","isWireless":0,"account":{"accountId":10453422,"accountName":"MPAREP","userName":"MARIELA K. PAREDES PIZARRO"}},{"imei":"000009175587200","status":"\u9759\u6b62","location":{"lng":"-78.586498","lat":"-9.079328"},"speed":0,"course":194,"accStatus":false,"licenseNumber":"H3H-668","endTime":1769181907,"platformEndTime":1769181907,"activateTime":1737640574,"statusTimeDesc":"2\u65f636\u520634\u79d2","signalTime":1739368113,"gpsTime":1739368113,"positionType":"GPS","isWireless":0,"account":{"accountId":10504004,"accountName":"USTJAM","userName":"EUSTAQUIO J. ARIAS MORALES"}},{"imei":"000009175587213","status":"\u9759\u6b62","location":{"lng":"-78.581402","lat":"-9.073452"},"speed":0,"course":11,"accStatus":false,"licenseNumber":"H2R-560","endTime":1769101223,"platformEndTime":1769101223,"activateTime":1737549758,"statusTimeDesc":"49\u520631\u79d2","signalTime":1739368178,"gpsTime":1739368178,"positionType":"GPS","isWireless":0,"account":{"accountId":10504004,"accountName":"USTJAM","userName":"EUSTAQUIO J. ARIAS MORALES"}}]}  
-[2025-02-12 08:51:22] local.INFO: Procesando unidad: 865468051205527-5.0166666666667  
-[2025-02-12 08:51:22] local.INFO: Procesando unidad: 865468051072158-3.8  
-[2025-02-12 08:51:22] local.INFO: Procesando unidad: 865468051205162-7.1166666666667  
-[2025-02-12 08:51:22] local.INFO: Procesando unidad: 869671071357279-3  
-[2025-02-12 08:51:22] local.INFO: Procesando unidad: 865468051205303-5.0333333333333  
-[2025-02-12 08:51:22] local.INFO: Procesando unidad: 000009175587213-10.016666666667  
-[2025-02-12 08:51:22] local.ERROR: App\Jobs\ProcessUnitsJob has been attempted too many times. {"exception":"[object] (Illuminate\\Queue\\MaxAttemptsExceededException(code: 0): App\\Jobs\\ProcessUnitsJob has been attempted too many times. at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\MaxAttemptsExceededException.php:24)
-[stacktrace]
-#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(794): Illuminate\\Queue\\MaxAttemptsExceededException::forJob(Object(Illuminate\\Queue\\Jobs\\RedisJob))
-#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(528): Illuminate\\Queue\\Worker->maxAttemptsExceededException(Object(Illuminate\\Queue\\Jobs\\RedisJob))
-#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(431): Illuminate\\Queue\\Worker->markJobAsFailedIfAlreadyExceedsMaxAttempts('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), 1)
-#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(392): Illuminate\\Queue\\Worker->process('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), Object(Illuminate\\Queue\\WorkerOptions))
-#4 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(178): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\RedisJob), 'redis', Object(Illuminate\\Queue\\WorkerOptions))
-#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(149): Illuminate\\Queue\\Worker->daemon('redis', 'web-services', Object(Illuminate\\Queue\\WorkerOptions))
-#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(132): Illuminate\\Queue\\Console\\WorkCommand->runWorker('redis', 'web-services')
-#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
-#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
-#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
-#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
-#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
-#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
-#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
-#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
-#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#20 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
-#21 {main}
-"} 
-[2025-02-12 08:54:57] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"865468051205527","status":"\u9759\u6b62","location":{"lng":"-78.569249","lat":"-9.077421"},"speed":0,"course":278,"accStatus":false,"licenseNumber":null,"endTime":1752641999,"platformEndTime":1754255706,"activateTime":1722716275,"statusTimeDesc":"4\u65f638\u520632\u79d2","signalTime":1739368262,"gpsTime":1739352063,"positionType":"GPS","isWireless":0,"account":{"accountId":10440349,"accountName":"PELAEST","userName":"NELSON E. SANCHEZ MU\u00d1OZ"}},{"imei":"865468051072158","status":"\u9759\u6b62","location":{"lng":"-79.097481","lat":"-8.088745"},"speed":0,"course":200,"accStatus":false,"licenseNumber":"BCK-237","endTime":1757884795,"platformEndTime":1757872216,"activateTime":1726331031,"statusTimeDesc":"1\u65f657\u52068\u79d2","signalTime":1739368347,"gpsTime":1739368214,"positionType":"GPS","isWireless":0,"account":{"accountId":10460321,"accountName":"JHFERAY","userName":"JHOAN F. OLIVO AYALA"}},{"imei":"865468051205162","status":"\u9759\u6b62","location":{"lng":"-78.583690","lat":"-9.068417"},"speed":0,"course":0,"accStatus":false,"licenseNumber":"H3G-800","endTime":1751587506,"platformEndTime":1751587506,"activateTime":1720046302,"statusTimeDesc":"1\u65f64\u520621\u79d2","signalTime":1739368315,"gpsTime":1739368297,"positionType":"GPS","isWireless":0,"account":{"accountId":10426434,"accountName":"LEOAMR","userName":"ARMANDO LEON CABANILLAS"}},{"imei":"869671071357279","status":"\u9759\u6b62","location":{"lng":"-78.5362133","lat":"-9.1067266"},"speed":0,"course":29,"accStatus":false,"licenseNumber":"H1N-201","endTime":1758612014,"platformEndTime":1758612014,"activateTime":1727072107,"statusTimeDesc":"6\u65f644\u520613\u79d2","signalTime":1739368463,"gpsTime":1739368463,"positionType":"GPS","isWireless":0,"account":{"accountId":10494259,"accountName":"ANTOBRIGE","userName":"ANTONELLA B. GARCIA ENCINAS"}},{"imei":"865468051205303","status":"\u9759\u6b62","location":{"lng":"-78.589972","lat":"-9.068821"},"speed":9,"course":21,"accStatus":false,"licenseNumber":"AWN-297","endTime":1756408509,"platformEndTime":1756408509,"activateTime":1724852937,"statusTimeDesc":"12\u65f622\u520639\u79d2","signalTime":1739368490,"gpsTime":1739323758,"positionType":"GPS","isWireless":0,"account":{"accountId":10453422,"accountName":"MPAREP","userName":"MARIELA K. PAREDES PIZARRO"}},{"imei":"000009175587200","status":"\u9759\u6b62","location":{"lng":"-78.586498","lat":"-9.079328"},"speed":0,"course":194,"accStatus":false,"licenseNumber":"H3H-668","endTime":1769181907,"platformEndTime":1769181907,"activateTime":1737640574,"statusTimeDesc":"2\u65f640\u520611\u79d2","signalTime":1739368474,"gpsTime":1739368474,"positionType":"GPS","isWireless":0,"account":{"accountId":10504004,"accountName":"USTJAM","userName":"EUSTAQUIO J. ARIAS MORALES"}},{"imei":"000009175587213","status":"\u9759\u6b62","location":{"lng":"-78.581402","lat":"-9.073452"},"speed":0,"course":11,"accStatus":false,"licenseNumber":"H2R-560","endTime":1769101223,"platformEndTime":1769101223,"activateTime":1737549758,"statusTimeDesc":"53\u52068\u79d2","signalTime":1739368358,"gpsTime":1739368358,"positionType":"GPS","isWireless":0,"account":{"accountId":10504004,"accountName":"USTJAM","userName":"EUSTAQUIO J. ARIAS MORALES"}}]}  
-[2025-02-12 08:54:57] local.INFO: Procesando unidad: 865468051205527-5.0166666666667  
-[2025-02-12 08:54:57] local.INFO: Procesando unidad: 865468051072158-6.0166666666667  
-[2025-02-12 08:54:57] local.INFO: Procesando unidad: 865468051205162-7.9166666666667  
-[2025-02-12 08:54:57] local.INFO: Procesando unidad: 869671071357279-9  
-[2025-02-12 08:54:57] local.INFO: Procesando unidad: 865468051205303-10.05  
-[2025-02-12 08:54:57] local.INFO: Procesando unidad: 000009175587200-6.0166666666667  
-[2025-02-12 08:54:57] local.INFO: Procesando unidad: 000009175587213-13.016666666667  
-[2025-02-12 08:55:00] local.ERROR: App\Jobs\ReenviarHistorial has been attempted too many times. {"exception":"[object] (Illuminate\\Queue\\MaxAttemptsExceededException(code: 0): App\\Jobs\\ReenviarHistorial has been attempted too many times. at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\MaxAttemptsExceededException.php:24)
-[stacktrace]
-#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(794): Illuminate\\Queue\\MaxAttemptsExceededException::forJob(Object(Illuminate\\Queue\\Jobs\\RedisJob))
-#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(528): Illuminate\\Queue\\Worker->maxAttemptsExceededException(Object(Illuminate\\Queue\\Jobs\\RedisJob))
-#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(431): Illuminate\\Queue\\Worker->markJobAsFailedIfAlreadyExceedsMaxAttempts('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), 1)
-#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(392): Illuminate\\Queue\\Worker->process('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), Object(Illuminate\\Queue\\WorkerOptions))
-#4 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(178): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\RedisJob), 'redis', Object(Illuminate\\Queue\\WorkerOptions))
-#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(149): Illuminate\\Queue\\Worker->daemon('redis', 'default', Object(Illuminate\\Queue\\WorkerOptions))
-#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(132): Illuminate\\Queue\\Console\\WorkCommand->runWorker('redis', 'default')
-#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
-#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
-#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
-#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
-#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
-#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
-#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
-#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
-#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#20 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
-#21 {main}
-"} 
-[2025-02-12 08:55:00] local.ERROR: App\Jobs\ReenviarHistorial has been attempted too many times. {"exception":"[object] (Illuminate\\Queue\\MaxAttemptsExceededException(code: 0): App\\Jobs\\ReenviarHistorial has been attempted too many times. at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\MaxAttemptsExceededException.php:24)
-[stacktrace]
-#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(794): Illuminate\\Queue\\MaxAttemptsExceededException::forJob(Object(Illuminate\\Queue\\Jobs\\RedisJob))
-#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(528): Illuminate\\Queue\\Worker->maxAttemptsExceededException(Object(Illuminate\\Queue\\Jobs\\RedisJob))
-#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(431): Illuminate\\Queue\\Worker->markJobAsFailedIfAlreadyExceedsMaxAttempts('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), 1)
-#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(392): Illuminate\\Queue\\Worker->process('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), Object(Illuminate\\Queue\\WorkerOptions))
-#4 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(178): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\RedisJob), 'redis', Object(Illuminate\\Queue\\WorkerOptions))
-#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(149): Illuminate\\Queue\\Worker->daemon('redis', 'default', Object(Illuminate\\Queue\\WorkerOptions))
-#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(132): Illuminate\\Queue\\Console\\WorkCommand->runWorker('redis', 'default')
-#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
-#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
-#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
-#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
-#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
-#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
-#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
-#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
-#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
-#20 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
-#21 {main}
-"} 
-[2025-02-12 11:06:09] local.ERROR: No hay accessToken disponible en Redis.  
+[2025-02-12 11:29:12] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000000007520645","deviceName":"07520645-wired","isWireless":0,"deviceType":"ST410","activateTime":1708752089,"platformEndTime":1711350304}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000000007979028","deviceName":"tes suntech ","isWireless":0,"deviceType":"ST410","activateTime":1708894716,"platformEndTime":1711486805}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350317174165740","deviceName":"JAIR","isWireless":0,"deviceType":"FMB920","activateTime":1738001629,"platformEndTime":1769574010}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350424068146420","deviceName":"D8Q-824","isWireless":0,"deviceType":"FMB920","activateTime":1735657108,"platformEndTime":1767197411}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057024229","deviceName":"D1G-326","isWireless":0,"deviceType":"GT06N","activateTime":1716414150,"platformEndTime":1752024068}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057055967","deviceName":"P3G-393","isWireless":0,"deviceType":"GT06N","activateTime":1685732578,"platformEndTime":1719952507}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050805897","deviceName":"BVV-823","isWireless":0,"deviceType":"GS10G","activateTime":1707400255,"platformEndTime":1770562504}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205253","deviceName":"T4P-212 (bennetos)","isWireless":0,"deviceType":"GS10G","activateTime":1720906434,"platformEndTime":1752446408}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051898461","deviceName":"51898461-wired","isWireless":0,"deviceType":"GS10G","activateTime":1738771312}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051900812","deviceName":"51900812-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901257","deviceName":"51901257-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901299","deviceName":"51901299-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901422","deviceName":"51901422-wired","isWireless":0,"deviceType":"GS10G","activateTime":1738637718,"platformEndTime":1770177617}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901521","deviceName":"51901521-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901661","deviceName":"51901661-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051903154","deviceName":"51903154-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051903196","deviceName":"51903196-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051903253","deviceName":"51903253-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060263603","deviceName":"T2Q-979","isWireless":0,"deviceType":"GS10G","activateTime":1736231244,"platformEndTime":1767769211}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060264734","deviceName":"60264734-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060265707","deviceName":"H1J-917","isWireless":0,"deviceType":"GS10G","activateTime":1735629199,"platformEndTime":1767166812}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060266309","deviceName":"60266309-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166059486290","deviceName":"59486290-wired","isWireless":0,"deviceType":"GPS303F"}  
+[2025-02-12 11:29:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869131070065084","mobile":"","deviceName":"70065084-wired","isWireless":0,"deviceType":"GS12"}  
+[2025-02-12 11:29:14] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:14] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844052180855","deviceName":"BEU-663","isWireless":0,"deviceType":"GPS303F","activateTime":1685361242,"platformEndTime":1687961407}  
+[2025-02-12 11:29:16] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:16] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"355710098598597","deviceName":"ASG-276","isWireless":0,"deviceType":"VT08S","activateTime":1685475446,"platformEndTime":1751402797}  
+[2025-02-12 11:29:23] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:24] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:24] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864893035680043","deviceName":"H3K-665","isWireless":0,"deviceType":"TK103","activateTime":1686345006,"platformEndTime":1755153214}  
+[2025-02-12 11:29:24] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864895032234062","deviceName":"H1Z-464","isWireless":0,"deviceType":"TK103","activateTime":1685783023,"platformEndTime":1751548207}  
+[2025-02-12 11:29:24] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:24] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"359857083009001","deviceName":"H1U-827","isWireless":0,"deviceType":"GV20","activateTime":1687456436,"platformEndTime":1719087907}  
+[2025-02-12 11:29:24] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166055704738","mobile":"","deviceName":"H2G-392","isWireless":0,"deviceType":"GPS303F","activateTime":1708403481,"platformEndTime":1740030905}  
+[2025-02-12 11:29:25] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:25] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051043983","deviceName":"F3S-861","isWireless":0,"deviceType":"TK403","activateTime":1689864683,"platformEndTime":1753033815}  
+[2025-02-12 11:29:25] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205550","mobile":"","deviceName":"420-D","isWireless":0,"deviceType":"GS10G","activateTime":1720135365,"platformEndTime":1751675106}  
+[2025-02-12 11:29:26] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:27] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:27] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051043967","deviceName":"M3S-722","isWireless":0,"deviceType":"TK403","activateTime":1713279786,"platformEndTime":1744819209}  
+[2025-02-12 11:29:30] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:30] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051070020","deviceName":"H3M-613","isWireless":0,"deviceType":"GS10G","activateTime":1713708782,"platformEndTime":1745247906}  
+[2025-02-12 11:29:31] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:31] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864895032749887","deviceName":"T1M-052","isWireless":0,"deviceType":"GPS303F","activateTime":1713911874,"platformEndTime":1750721407}  
+[2025-02-12 11:29:31] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:31] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865011033263519","deviceName":"ARI-050","isWireless":0,"deviceType":"GPS303F","activateTime":1714083379,"platformEndTime":1750893607}  
+[2025-02-12 11:29:32] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:32] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663815","deviceName":"B0H-682","isWireless":0,"deviceType":"GPS303F","activateTime":1714086332,"platformEndTime":1750908906}  
+[2025-02-12 11:29:33] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:33] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056985179","mobile":"","deviceName":"P3C-086","isWireless":0,"deviceType":"GPS303F","activateTime":1714402812,"platformEndTime":1751229349}  
+[2025-02-12 11:29:34] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:34] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051073826","deviceName":"R388H","isWireless":0,"deviceType":"GS10G","activateTime":1715193804,"platformEndTime":1746732305}  
+[2025-02-12 11:29:36] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:36] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844054826406","deviceName":"H2M-618","isWireless":0,"deviceType":"GPS303F","activateTime":1715527206,"platformEndTime":1749784051}  
+[2025-02-12 11:29:36] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864872030693441","deviceName":"H3L-696","isWireless":0,"deviceType":"GPS303F","activateTime":1715527478,"platformEndTime":1752456557}  
+[2025-02-12 11:29:36] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056222946","deviceName":"Z6J-273","isWireless":0,"deviceType":"GPS303F","activateTime":1717776506,"platformEndTime":1751915708}  
+[2025-02-12 11:29:36] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316804","deviceName":"Z6J-272","isWireless":0,"deviceType":"GPS303F","activateTime":1717787548,"platformEndTime":1751952608}  
+[2025-02-12 11:29:37] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:37] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056671875","mobile":"","deviceName":"M2E-336","isWireless":0,"deviceType":"GPS303F","activateTime":1715641897,"platformEndTime":1752413700}  
+[2025-02-12 11:29:38] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:38] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316663","mobile":"","deviceName":"H2O-239","isWireless":0,"deviceType":"GPS303F","activateTime":1715715724,"platformEndTime":1749846007}  
+[2025-02-12 11:29:40] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:40] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663922","mobile":"","deviceName":"H2T-906","isWireless":0,"deviceType":"GPS303F","activateTime":1718827440,"platformEndTime":1750379706}  
+[2025-02-12 11:29:41] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:41] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316580","mobile":"","deviceName":"T7M-104","isWireless":0,"deviceType":"GPS303F","activateTime":1718894321,"platformEndTime":1750455008}  
+[2025-02-12 11:29:42] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:42] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316689","mobile":"","deviceName":"H2X-817","isWireless":0,"deviceType":"GPS303F","activateTime":1719077999,"platformEndTime":1750617008}  
+[2025-02-12 11:29:43] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:43] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057317190","mobile":"","deviceName":"H2T-170","isWireless":0,"deviceType":"GPS303F","activateTime":1719269365,"platformEndTime":1750815906}  
+[2025-02-12 11:29:44] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:44] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166058968868","mobile":"","deviceName":"TBM-857","isWireless":0,"deviceType":"GPS303F","activateTime":1719444550,"platformEndTime":1750988106}  
+[2025-02-12 11:29:46] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:46] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166058968835","mobile":"","deviceName":"TDB-832","isWireless":0,"deviceType":"GPS303F","activateTime":1719693845,"platformEndTime":1751233505}  
+[2025-02-12 11:29:47] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:47] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166059488981","mobile":"","deviceName":"CMU277","isWireless":0,"deviceType":"GPS303F","activateTime":1727455944,"platformEndTime":1759006820}  
+[2025-02-12 11:29:49] local.INFO: Dispositivos existentes: ["000000007520645","000000007979028","350317174165740","350424068146420","358899057024229","358899057055967","865468050805897","865468051205253","865468051898461","865468051900812","865468051901257","865468051901299","865468051901422","865468051901521","865468051901661","865468051903154","865468051903196","865468051903253","867144060263603","867144060264734","867144060265707","867144060266309","868166059486290","869131070065084"]  
+[2025-02-12 11:29:50] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:50] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663948","mobile":"","deviceName":"AZH-706","isWireless":0,"deviceType":"GPS303F","activateTime":1734968042,"platformEndTime":1766507710}  
+[2025-02-12 11:29:50] local.INFO: Dispositivos existentes: ["863844052180855"]  
+[2025-02-12 11:29:50] local.INFO: Dispositivos existentes: ["355710098598597"]  
+[2025-02-12 11:29:50] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:51] local.INFO: Dispositivos existentes: ["864893035680043","864895032234062"]  
+[2025-02-12 11:29:51] local.INFO: Dispositivos existentes: ["359857083009001","868166055704738"]  
+[2025-02-12 11:29:52] local.INFO: Dispositivos existentes: ["864035051043983","865468051205550"]  
+[2025-02-12 11:29:52] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:52] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:52] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864180035624142","deviceName":"F4N-236","isWireless":0,"deviceType":"GPS303F","activateTime":1736694738,"platformEndTime":1768239307}  
+[2025-02-12 11:29:52] local.INFO: Dispositivos existentes: ["864035051043967"]  
+[2025-02-12 11:29:53] local.INFO: Dispositivos existentes: ["865468051070020"]  
+[2025-02-12 11:29:53] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:53] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166059488973","deviceName":"TAU-888","isWireless":0,"deviceType":"GPS303F","activateTime":1737069072,"platformEndTime":1768611909}  
+[2025-02-12 11:29:53] local.INFO: Dispositivos existentes: ["864895032749887"]  
+[2025-02-12 11:29:54] local.INFO: Dispositivos existentes: ["865011033263519"]  
+[2025-02-12 11:29:54] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060264767","deviceName":"RETROEXCAVADORA","isWireless":0,"deviceType":"GS10G","activateTime":1738361511,"platformEndTime":1769901306}  
+[2025-02-12 11:29:54] local.INFO: Dispositivos existentes: ["863844056663815"]  
+[2025-02-12 11:29:55] local.INFO: Dispositivos existentes: ["868166056985179"]  
+[2025-02-12 11:29:55] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:55] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166052398740","deviceName":"BFY-902","isWireless":0,"deviceType":"GPS303F","activateTime":1687815403,"platformEndTime":1751126763}  
+[2025-02-12 11:29:55] local.INFO: Dispositivos existentes: ["865468051073826"]  
+[2025-02-12 11:29:55] local.INFO: Dispositivos existentes: ["863844054826406","864872030693441","868166056222946","868166057316804"]  
+[2025-02-12 11:29:55] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:55] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172513932","deviceName":"H2P-066","isWireless":0,"deviceType":"ST-906","activateTime":1690121377,"platformEndTime":1753287904}  
+[2025-02-12 11:29:56] local.INFO: Dispositivos existentes: ["863844056671875"]  
+[2025-02-12 11:29:56] local.INFO: Dispositivos existentes: ["868166057316663"]  
+[2025-02-12 11:29:56] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:56] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844052179212","deviceName":"52179212-wired","isWireless":0,"deviceType":"GPS303F","activateTime":1708528260,"platformEndTime":1740165910}  
+[2025-02-12 11:29:57] local.INFO: Dispositivos existentes: ["863844056663922"]  
+[2025-02-12 11:29:57] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:29:57] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350544508740365","mobile":"","deviceName":"P3Q-487","isWireless":0,"deviceType":"FMB920","activateTime":1708374252,"platformEndTime":1739997303}  
+[2025-02-12 11:29:57] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057025564","deviceName":"CJK-653","isWireless":0,"deviceType":"GT06N","activateTime":1708417660,"platformEndTime":1740040504}  
+[2025-02-12 11:29:57] local.INFO: Dispositivos existentes: ["868166057316580"]  
+[2025-02-12 11:29:57] local.INFO: Dispositivos existentes: ["868166057316689"]  
+[2025-02-12 11:29:58] local.INFO: Dispositivos existentes: ["868166057317190"]  
+[2025-02-12 11:29:58] local.INFO: Dispositivos existentes: ["868166058968868"]  
+[2025-02-12 11:29:59] local.INFO: Dispositivos existentes: ["868166058968835"]  
+[2025-02-12 11:29:59] local.INFO: Dispositivos existentes: ["868166059488981"]  
+[2025-02-12 11:30:00] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350317173119417","deviceName":"H1S-095","isWireless":0,"deviceType":"FMB920","activateTime":1709194502,"platformEndTime":1743323406}  
+[2025-02-12 11:30:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166052398815","deviceName":"M2K-593","isWireless":0,"deviceType":"GPS303F","activateTime":1708892487,"platformEndTime":1743121242}  
+[2025-02-12 11:30:00] local.INFO: Dispositivos existentes: ["863844056663948"]  
+[2025-02-12 11:30:00] local.INFO: Dispositivos existentes: ["864180035624142"]  
+[2025-02-12 11:30:00] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050803785","mobile":"","deviceName":"T4B-464","isWireless":0,"deviceType":"GS10G","activateTime":1709685954,"platformEndTime":1741226709}  
+[2025-02-12 11:30:01] local.INFO: Dispositivos existentes: ["868166059488973"]  
+[2025-02-12 11:30:01] local.INFO: Dispositivos existentes: ["867144060264767"]  
+[2025-02-12 11:30:01] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:01] local.INFO: Dispositivos existentes: ["868166052398740"]  
+[2025-02-12 11:30:02] local.INFO: Dispositivos existentes: ["000009172513932"]  
+[2025-02-12 11:30:02] local.INFO: Dispositivos existentes: ["863844052179212"]  
+[2025-02-12 11:30:03] local.INFO: Dispositivos existentes: ["350544508740365","358899057025564"]  
+[2025-02-12 11:30:03] local.INFO: Dispositivos existentes: ["350317173119417","868166052398815"]  
+[2025-02-12 11:30:03] local.INFO: Dispositivos existentes: ["865468050803785"]  
+[2025-02-12 11:30:04] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050803892","deviceName":"T8I-857","isWireless":0,"deviceType":"GS10G","activateTime":1710079947,"platformEndTime":1741620304}  
+[2025-02-12 11:30:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050805582","mobile":"+436761723368534","deviceName":"F5P-865","isWireless":0,"deviceType":"GS10G","activateTime":1710080737,"platformEndTime":1741620607}  
+[2025-02-12 11:30:04] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:04] local.INFO: Dispositivos existentes: ["865468050803892","865468050805582"]  
+[2025-02-12 11:30:04] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806374","mobile":"","deviceName":"F6D-603","isWireless":0,"deviceType":"GS10G","activateTime":1710292755,"platformEndTime":1741831808}  
+[2025-02-12 11:30:05] local.INFO: Dispositivos existentes: ["865468050806374"]  
+[2025-02-12 11:30:05] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:05] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051046697","deviceName":"TAV-849","isWireless":0,"deviceType":"TK403","activateTime":1711121818,"platformEndTime":1750527016}  
+[2025-02-12 11:30:05] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865413051725686","deviceName":"H2T-870","isWireless":0,"deviceType":"FMC920","activateTime":1710951648,"platformEndTime":1750362308}  
+[2025-02-12 11:30:05] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806341","deviceName":"BEO-900","isWireless":0,"deviceType":"GS10G","activateTime":1710343919,"platformEndTime":1741881305}  
+[2025-02-12 11:30:05] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051074246","deviceName":"T4H-820","isWireless":0,"deviceType":"GS10G","activateTime":1717534915,"platformEndTime":1749081905}  
+[2025-02-12 11:30:05] local.INFO: Dispositivos existentes: ["864035051046697","865413051725686","865468050806341","865468051074246"]  
+[2025-02-12 11:30:06] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:06] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205535","mobile":"","deviceName":"BWC-588","isWireless":0,"deviceType":"GS10G","activateTime":1718476293,"platformEndTime":1750014007}  
+[2025-02-12 11:30:06] local.INFO: Dispositivos existentes: ["865468051205535"]  
+[2025-02-12 11:30:06] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:06] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865190070105468","mobile":"","deviceName":"TAD-822","isWireless":0,"deviceType":"GS900","activateTime":1734272783,"platformEndTime":1765813814}  
+[2025-02-12 11:30:07] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869131070062982","mobile":"","deviceName":"D3E-944","isWireless":0,"deviceType":"GS12","activateTime":1734969773,"platformEndTime":1766513413}  
+[2025-02-12 11:30:07] local.INFO: Dispositivos existentes: ["865190070105468"]  
+[2025-02-12 11:30:07] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172513996","deviceName":"H2Y-625","isWireless":0,"deviceType":"ST-906","activateTime":1690232314,"platformEndTime":1721879106}  
+[2025-02-12 11:30:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899054774073","deviceName":"H2T-363","isWireless":0,"deviceType":"GT06N","activateTime":1690257606,"platformEndTime":1721881054}  
+[2025-02-12 11:30:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663724","deviceName":"BYN-314","isWireless":0,"deviceType":"GPS303F","activateTime":1690060063,"platformEndTime":1721698503}  
+[2025-02-12 11:30:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051046119","mobile":"","deviceName":"420-D","isWireless":0,"deviceType":"GPS303F","activateTime":1708811650,"platformEndTime":1719680823}  
+[2025-02-12 11:30:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056985302","mobile":"","deviceName":"AWZ-850","isWireless":0,"deviceType":"GPS303F","activateTime":1709058844,"platformEndTime":1751380256}  
+[2025-02-12 11:30:07] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056664102","mobile":"","deviceName":"T6M-457","isWireless":0,"deviceType":"GPS303F","activateTime":1691279829,"platformEndTime":1722908404}  
+[2025-02-12 11:30:08] local.INFO: Dispositivos existentes: ["869131070062982"]  
+[2025-02-12 11:30:08] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:08] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051074097","mobile":"436761723368523","deviceName":"H2E-888","isWireless":0,"deviceType":"GS10G","activateTime":1714252994,"platformEndTime":1745796607}  
+[2025-02-12 11:30:08] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:08] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"351608080042026","deviceName":"H2A-726","isWireless":0,"deviceType":"GT06N","activateTime":1714673084,"platformEndTime":1751458231}  
+[2025-02-12 11:30:08] local.INFO: Dispositivos existentes: ["000009172513996","358899054774073","863844056663724","864035051046119","868166056985302"]  
+[2025-02-12 11:30:09] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:09] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"351969560682818","deviceName":"F4P-326","isWireless":0,"deviceType":"GT06N","activateTime":1715094690,"platformEndTime":1749784110}  
+[2025-02-12 11:30:09] local.INFO: Dispositivos existentes: ["863844056664102"]  
+[2025-02-12 11:30:09] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:09] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051206541","mobile":"","deviceName":"BVL-331","isWireless":0,"deviceType":"GS10G","activateTime":1718377230,"platformEndTime":1749915907}  
+[2025-02-12 11:30:10] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:10] local.INFO: Dispositivos existentes: ["865468051074097"]  
+[2025-02-12 11:30:10] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:10] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806622","mobile":"","deviceName":"Max TRCH","isWireless":0,"deviceType":"GS10G","activateTime":1709135682,"platformEndTime":1740675304}  
+[2025-02-12 11:30:10] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:10] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172504738","mobile":"+436761723368562","deviceName":"246D-02365","isWireless":0,"deviceType":"ST-906","activateTime":1709069273,"platformEndTime":1740694806}  
+[2025-02-12 11:30:10] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"357073292898455","deviceName":"Retro 1","isWireless":0,"deviceType":"FMB920","activateTime":1712261466,"platformEndTime":1751663706}  
+[2025-02-12 11:30:10] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"357544378310961","deviceName":"Retro 2","isWireless":0,"deviceType":"FMB920","activateTime":1712198412,"platformEndTime":1751600705}  
+[2025-02-12 11:30:11] local.INFO: Dispositivos existentes: ["351608080042026"]  
+[2025-02-12 11:30:11] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:11] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057034145","deviceName":"H1J-109","isWireless":0,"deviceType":"GT06N","activateTime":1719675205,"platformEndTime":1751211608}  
+[2025-02-12 11:30:11] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:11] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205113","mobile":"","deviceName":"H3A-904","isWireless":0,"deviceType":"GS10G","activateTime":1720629055,"platformEndTime":1752178506}  
+[2025-02-12 11:30:11] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205162","deviceName":"H3G-800","isWireless":0,"deviceType":"GS10G","activateTime":1720046302,"platformEndTime":1751587506}  
+[2025-02-12 11:30:11] local.INFO: Dispositivos existentes: ["351969560682818"]  
+[2025-02-12 11:30:12] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205303","deviceName":"AWN-297","isWireless":0,"deviceType":"GS10G","activateTime":1724852937,"platformEndTime":1756408509}  
+[2025-02-12 11:30:12] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:12] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205527","mobile":"","deviceName":"H2U-617","isWireless":0,"deviceType":"GS10G","activateTime":1722716275,"platformEndTime":1754255706}  
+[2025-02-12 11:30:12] local.INFO: Dispositivos existentes: ["865468051206541"]  
+[2025-02-12 11:30:13] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:13] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051201989","mobile":"","deviceName":"BEA-748","isWireless":0,"deviceType":"GS10G","activateTime":1725504516,"platformEndTime":1757043613}  
+[2025-02-12 11:30:13] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:13] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051072158","mobile":"","deviceName":"BCK-237","isWireless":0,"deviceType":"GS10G","activateTime":1726331031,"platformEndTime":1757872216}  
+[2025-02-12 11:30:13] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:13] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:13] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205030","deviceName":"LZ-YW-41","isWireless":0,"deviceType":"GS10G","activateTime":1722915310,"platformEndTime":1754454907}  
+[2025-02-12 11:30:14] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:14] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869671071357279","deviceName":"H1N-201","isWireless":0,"deviceType":"Eco5","activateTime":1727072107,"platformEndTime":1758612014}  
+[2025-02-12 11:30:14] local.INFO: Dispositivos existentes: ["865468050806622"]  
+[2025-02-12 11:30:14] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:15] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:15] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009175587200","deviceName":"H3H-668","isWireless":0,"deviceType":"ST-901","activateTime":1737640574,"platformEndTime":1769181907}  
+[2025-02-12 11:30:15] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009175587213","deviceName":"H2R-560","isWireless":0,"deviceType":"ST-901","activateTime":1737549758,"platformEndTime":1769101223}  
+[2025-02-12 11:30:15] local.INFO: Dispositivos existentes: ["000009172504738","357073292898455","357544378310961"]  
+[2025-02-12 11:30:16] local.INFO: Dispositivos existentes: ["358899057034145"]  
+[2025-02-12 11:30:17] local.INFO: Dispositivos existentes: ["865468051205113","865468051205162"]  
+[2025-02-12 11:30:18] local.INFO: Dispositivos existentes: ["865468051205303"]  
+[2025-02-12 11:30:19] local.INFO: Dispositivos existentes: ["865468051205527"]  
+[2025-02-12 11:30:20] local.INFO: Dispositivos existentes: ["865468051201989"]  
+[2025-02-12 11:30:21] local.INFO: Dispositivos existentes: ["865468051072158"]  
+[2025-02-12 11:30:22] local.INFO: Dispositivos existentes: ["865468051205030"]  
+[2025-02-12 11:30:22] local.INFO: Dispositivos existentes: ["869671071357279"]  
+[2025-02-12 11:30:27] local.INFO: Dispositivos existentes: []  
+[2025-02-12 11:30:27] local.INFO: Dispositivos existentes: ["000009175587200","000009175587213"]  
+[2025-02-12 11:33:43] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060263603","deviceName":"T2Q-979","isWireless":0,"deviceType":"GS10G","activateTime":1736231244,"platformEndTime":1767769211}  
+[2025-02-12 11:33:44] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844052180855","deviceName":"BEU-663","isWireless":0,"deviceType":"GPS303F","activateTime":1685361242,"platformEndTime":1687961407}  
+[2025-02-12 11:33:44] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"355710098598597","deviceName":"ASG-276","isWireless":0,"deviceType":"VT08S","activateTime":1685475446,"platformEndTime":1751402797}  
+[2025-02-12 11:33:45] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864893035680043","deviceName":"H3K-665","isWireless":0,"deviceType":"TK103","activateTime":1686345006,"platformEndTime":1755153214}  
+[2025-02-12 11:33:45] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864895032234062","deviceName":"H1Z-464","isWireless":0,"deviceType":"TK103","activateTime":1685783023,"platformEndTime":1751548207}  
+[2025-02-12 11:33:46] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"359857083009001","deviceName":"H1U-827","isWireless":0,"deviceType":"GV20","activateTime":1687456436,"platformEndTime":1719087907}  
+[2025-02-12 11:33:46] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166055704738","mobile":"","deviceName":"H2G-392","isWireless":0,"deviceType":"GPS303F","activateTime":1708403481,"platformEndTime":1740030905}  
+[2025-02-12 11:33:46] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051043983","deviceName":"F3S-861","isWireless":0,"deviceType":"TK403","activateTime":1689864683,"platformEndTime":1753033815}  
+[2025-02-12 11:33:46] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205550","mobile":"","deviceName":"420-D","isWireless":0,"deviceType":"GS10G","activateTime":1720135365,"platformEndTime":1751675106}  
+[2025-02-12 11:33:47] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051043967","deviceName":"M3S-722","isWireless":0,"deviceType":"TK403","activateTime":1713279786,"platformEndTime":1744819209}  
+[2025-02-12 11:33:47] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051070020","deviceName":"H3M-613","isWireless":0,"deviceType":"GS10G","activateTime":1713708782,"platformEndTime":1745247906}  
+[2025-02-12 11:33:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864895032749887","deviceName":"T1M-052","isWireless":0,"deviceType":"GPS303F","activateTime":1713911874,"platformEndTime":1750721407}  
+[2025-02-12 11:33:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865011033263519","deviceName":"ARI-050","isWireless":0,"deviceType":"GPS303F","activateTime":1714083379,"platformEndTime":1750893607}  
+[2025-02-12 11:33:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663815","deviceName":"B0H-682","isWireless":0,"deviceType":"GPS303F","activateTime":1714086332,"platformEndTime":1750908906}  
+[2025-02-12 11:33:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056985179","mobile":"","deviceName":"P3C-086","isWireless":0,"deviceType":"GPS303F","activateTime":1714402812,"platformEndTime":1751229349}  
+[2025-02-12 11:33:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051073826","deviceName":"R388H","isWireless":0,"deviceType":"GS10G","activateTime":1715193804,"platformEndTime":1746732305}  
+[2025-02-12 11:33:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844054826406","deviceName":"H2M-618","isWireless":0,"deviceType":"GPS303F","activateTime":1715527206,"platformEndTime":1749784051}  
+[2025-02-12 11:33:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864872030693441","deviceName":"H3L-696","isWireless":0,"deviceType":"GPS303F","activateTime":1715527478,"platformEndTime":1752456557}  
+[2025-02-12 11:33:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056222946","deviceName":"Z6J-273","isWireless":0,"deviceType":"GPS303F","activateTime":1717776506,"platformEndTime":1751915708}  
+[2025-02-12 11:33:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316804","deviceName":"Z6J-272","isWireless":0,"deviceType":"GPS303F","activateTime":1717787548,"platformEndTime":1751952608}  
+[2025-02-12 11:33:50] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056671875","mobile":"","deviceName":"M2E-336","isWireless":0,"deviceType":"GPS303F","activateTime":1715641897,"platformEndTime":1752413700}  
+[2025-02-12 11:33:50] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316663","mobile":"","deviceName":"H2O-239","isWireless":0,"deviceType":"GPS303F","activateTime":1715715724,"platformEndTime":1749846007}  
+[2025-02-12 11:33:51] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663922","mobile":"","deviceName":"H2T-906","isWireless":0,"deviceType":"GPS303F","activateTime":1718827440,"platformEndTime":1750379706}  
+[2025-02-12 11:33:51] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316580","mobile":"","deviceName":"T7M-104","isWireless":0,"deviceType":"GPS303F","activateTime":1718894321,"platformEndTime":1750455008}  
+[2025-02-12 11:33:51] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316689","mobile":"","deviceName":"H2X-817","isWireless":0,"deviceType":"GPS303F","activateTime":1719077999,"platformEndTime":1750617008}  
+[2025-02-12 11:33:52] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057317190","mobile":"","deviceName":"H2T-170","isWireless":0,"deviceType":"GPS303F","activateTime":1719269365,"platformEndTime":1750815906}  
+[2025-02-12 11:33:52] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166058968868","mobile":"","deviceName":"TBM-857","isWireless":0,"deviceType":"GPS303F","activateTime":1719444550,"platformEndTime":1750988106}  
+[2025-02-12 11:33:53] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166058968835","mobile":"","deviceName":"TDB-832","isWireless":0,"deviceType":"GPS303F","activateTime":1719693845,"platformEndTime":1751233505}  
+[2025-02-12 11:33:53] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166059488981","mobile":"","deviceName":"CMU277","isWireless":0,"deviceType":"GPS303F","activateTime":1727455944,"platformEndTime":1759006820}  
+[2025-02-12 11:33:53] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663948","mobile":"","deviceName":"AZH-706","isWireless":0,"deviceType":"GPS303F","activateTime":1734968042,"platformEndTime":1766507710}  
+[2025-02-12 11:33:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864180035624142","deviceName":"F4N-236","isWireless":0,"deviceType":"GPS303F","activateTime":1736694738,"platformEndTime":1768239307}  
+[2025-02-12 11:33:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166059488973","deviceName":"TAU-888","isWireless":0,"deviceType":"GPS303F","activateTime":1737069072,"platformEndTime":1768611909}  
+[2025-02-12 11:33:55] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060264767","deviceName":"RETROEXCAVADORA","isWireless":0,"deviceType":"GS10G","activateTime":1738361511,"platformEndTime":1769901306}  
+[2025-02-12 11:33:55] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166052398740","deviceName":"BFY-902","isWireless":0,"deviceType":"GPS303F","activateTime":1687815403,"platformEndTime":1751126763}  
+[2025-02-12 11:33:55] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172513932","deviceName":"H2P-066","isWireless":0,"deviceType":"ST-906","activateTime":1690121377,"platformEndTime":1753287904}  
+[2025-02-12 11:33:56] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844052179212","deviceName":"52179212-wired","isWireless":0,"deviceType":"GPS303F","activateTime":1708528260,"platformEndTime":1740165910}  
+[2025-02-12 11:33:56] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350544508740365","mobile":"","deviceName":"P3Q-487","isWireless":0,"deviceType":"FMB920","activateTime":1708374252,"platformEndTime":1739997303}  
+[2025-02-12 11:33:56] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057025564","deviceName":"CJK-653","isWireless":0,"deviceType":"GT06N","activateTime":1708417660,"platformEndTime":1740040504}  
+[2025-02-12 11:33:57] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350317173119417","deviceName":"H1S-095","isWireless":0,"deviceType":"FMB920","activateTime":1709194502,"platformEndTime":1743323406}  
+[2025-02-12 11:33:57] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166052398815","deviceName":"M2K-593","isWireless":0,"deviceType":"GPS303F","activateTime":1708892487,"platformEndTime":1743121242}  
+[2025-02-12 11:33:57] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050803785","mobile":"","deviceName":"T4B-464","isWireless":0,"deviceType":"GS10G","activateTime":1709685954,"platformEndTime":1741226709}  
+[2025-02-12 11:33:58] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050803892","deviceName":"T8I-857","isWireless":0,"deviceType":"GS10G","activateTime":1710079947,"platformEndTime":1741620304}  
+[2025-02-12 11:33:58] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050805582","mobile":"+436761723368534","deviceName":"F5P-865","isWireless":0,"deviceType":"GS10G","activateTime":1710080737,"platformEndTime":1741620607}  
+[2025-02-12 11:33:58] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806374","mobile":"","deviceName":"F6D-603","isWireless":0,"deviceType":"GS10G","activateTime":1710292755,"platformEndTime":1741831808}  
+[2025-02-12 11:33:59] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051046697","deviceName":"TAV-849","isWireless":0,"deviceType":"TK403","activateTime":1711121818,"platformEndTime":1750527016}  
+[2025-02-12 11:33:59] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865413051725686","deviceName":"H2T-870","isWireless":0,"deviceType":"FMC920","activateTime":1710951648,"platformEndTime":1750362308}  
+[2025-02-12 11:33:59] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806341","deviceName":"BEO-900","isWireless":0,"deviceType":"GS10G","activateTime":1710343919,"platformEndTime":1741881305}  
+[2025-02-12 11:33:59] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051074246","deviceName":"T4H-820","isWireless":0,"deviceType":"GS10G","activateTime":1717534915,"platformEndTime":1749081905}  
+[2025-02-12 11:33:59] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205535","mobile":"","deviceName":"BWC-588","isWireless":0,"deviceType":"GS10G","activateTime":1718476293,"platformEndTime":1750014007}  
+[2025-02-12 11:33:59] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865190070105468","mobile":"","deviceName":"TAD-822","isWireless":0,"deviceType":"GS900","activateTime":1734272783,"platformEndTime":1765813814}  
+[2025-02-12 11:34:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869131070062982","mobile":"","deviceName":"D3E-944","isWireless":0,"deviceType":"GS12","activateTime":1734969773,"platformEndTime":1766513413}  
+[2025-02-12 11:34:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172513996","deviceName":"H2Y-625","isWireless":0,"deviceType":"ST-906","activateTime":1690232314,"platformEndTime":1721879106}  
+[2025-02-12 11:34:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899054774073","deviceName":"H2T-363","isWireless":0,"deviceType":"GT06N","activateTime":1690257606,"platformEndTime":1721881054}  
+[2025-02-12 11:34:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663724","deviceName":"BYN-314","isWireless":0,"deviceType":"GPS303F","activateTime":1690060063,"platformEndTime":1721698503}  
+[2025-02-12 11:34:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051046119","mobile":"","deviceName":"420-D","isWireless":0,"deviceType":"GPS303F","activateTime":1708811650,"platformEndTime":1719680823}  
+[2025-02-12 11:34:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056985302","mobile":"","deviceName":"AWZ-850","isWireless":0,"deviceType":"GPS303F","activateTime":1709058844,"platformEndTime":1751380256}  
+[2025-02-12 11:34:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056664102","mobile":"","deviceName":"T6M-457","isWireless":0,"deviceType":"GPS303F","activateTime":1691279829,"platformEndTime":1722908404}  
+[2025-02-12 11:34:01] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051074097","mobile":"436761723368523","deviceName":"H2E-888","isWireless":0,"deviceType":"GS10G","activateTime":1714252994,"platformEndTime":1745796607}  
+[2025-02-12 11:34:01] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"351608080042026","deviceName":"H2A-726","isWireless":0,"deviceType":"GT06N","activateTime":1714673084,"platformEndTime":1751458231}  
+[2025-02-12 11:34:02] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"351969560682818","deviceName":"F4P-326","isWireless":0,"deviceType":"GT06N","activateTime":1715094690,"platformEndTime":1749784110}  
+[2025-02-12 11:34:02] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051206541","mobile":"","deviceName":"BVL-331","isWireless":0,"deviceType":"GS10G","activateTime":1718377230,"platformEndTime":1749915907}  
+[2025-02-12 11:34:03] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806622","mobile":"","deviceName":"Max TRCH","isWireless":0,"deviceType":"GS10G","activateTime":1709135682,"platformEndTime":1740675304}  
+[2025-02-12 11:34:03] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172504738","mobile":"+436761723368562","deviceName":"246D-02365","isWireless":0,"deviceType":"ST-906","activateTime":1709069273,"platformEndTime":1740694806}  
+[2025-02-12 11:34:03] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"357073292898455","deviceName":"Retro 1","isWireless":0,"deviceType":"FMB920","activateTime":1712261466,"platformEndTime":1751663706}  
+[2025-02-12 11:34:03] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"357544378310961","deviceName":"Retro 2","isWireless":0,"deviceType":"FMB920","activateTime":1712198412,"platformEndTime":1751600705}  
+[2025-02-12 11:34:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057034145","deviceName":"H1J-109","isWireless":0,"deviceType":"GT06N","activateTime":1719675205,"platformEndTime":1751211608}  
+[2025-02-12 11:34:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205113","mobile":"","deviceName":"H3A-904","isWireless":0,"deviceType":"GS10G","activateTime":1720629055,"platformEndTime":1752178506}  
+[2025-02-12 11:34:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205162","deviceName":"H3G-800","isWireless":0,"deviceType":"GS10G","activateTime":1720046302,"platformEndTime":1751587506}  
+[2025-02-12 11:34:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205303","deviceName":"AWN-297","isWireless":0,"deviceType":"GS10G","activateTime":1724852937,"platformEndTime":1756408509}  
+[2025-02-12 11:34:05] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205527","mobile":"","deviceName":"H2U-617","isWireless":0,"deviceType":"GS10G","activateTime":1722716275,"platformEndTime":1754255706}  
+[2025-02-12 11:34:05] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051201989","mobile":"","deviceName":"BEA-748","isWireless":0,"deviceType":"GS10G","activateTime":1725504516,"platformEndTime":1757043613}  
+[2025-02-12 11:34:06] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051072158","mobile":"","deviceName":"BCK-237","isWireless":0,"deviceType":"GS10G","activateTime":1726331031,"platformEndTime":1757872216}  
+[2025-02-12 11:34:06] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205030","deviceName":"LZ-YW-41","isWireless":0,"deviceType":"GS10G","activateTime":1722915310,"platformEndTime":1754454907}  
+[2025-02-12 11:34:06] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869671071357279","deviceName":"H1N-201","isWireless":0,"deviceType":"Eco5","activateTime":1727072107,"platformEndTime":1758612014}  
+[2025-02-12 11:34:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009175587200","deviceName":"H3H-668","isWireless":0,"deviceType":"ST-901","activateTime":1737640574,"platformEndTime":1769181907}  
+[2025-02-12 11:34:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009175587213","deviceName":"H2R-560","isWireless":0,"deviceType":"ST-901","activateTime":1737549758,"platformEndTime":1769101223}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000000007520645","deviceName":"07520645-wired","isWireless":0,"deviceType":"ST410","activateTime":1708752089,"platformEndTime":1711350304}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000000007979028","deviceName":"tes suntech ","isWireless":0,"deviceType":"ST410","activateTime":1708894716,"platformEndTime":1711486805}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350317174165740","deviceName":"JAIR","isWireless":0,"deviceType":"FMB920","activateTime":1738001629,"platformEndTime":1769574010}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350424068146420","deviceName":"D8Q-824","isWireless":0,"deviceType":"FMB920","activateTime":1735657108,"platformEndTime":1767197411}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057024229","deviceName":"D1G-326","isWireless":0,"deviceType":"GT06N","activateTime":1716414150,"platformEndTime":1752024068}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057055967","deviceName":"P3G-393","isWireless":0,"deviceType":"GT06N","activateTime":1685732578,"platformEndTime":1719952507}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050805897","deviceName":"BVV-823","isWireless":0,"deviceType":"GS10G","activateTime":1707400255,"platformEndTime":1770562504}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205253","deviceName":"T4P-212 (bennetos)","isWireless":0,"deviceType":"GS10G","activateTime":1720906434,"platformEndTime":1752446408}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051898461","deviceName":"51898461-wired","isWireless":0,"deviceType":"GS10G","activateTime":1738771312}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051900812","deviceName":"51900812-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901257","deviceName":"51901257-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901299","deviceName":"51901299-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901422","deviceName":"51901422-wired","isWireless":0,"deviceType":"GS10G","activateTime":1738637718,"platformEndTime":1770177617}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901521","deviceName":"51901521-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051901661","deviceName":"51901661-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051903154","deviceName":"51903154-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051903196","deviceName":"51903196-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051903253","deviceName":"51903253-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060263603","deviceName":"T2Q-979","isWireless":0,"deviceType":"GS10G","activateTime":1736231244,"platformEndTime":1767769211}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060264734","deviceName":"60264734-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060265707","deviceName":"H1J-917","isWireless":0,"deviceType":"GS10G","activateTime":1735629199,"platformEndTime":1767166812}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060266309","deviceName":"60266309-wired","isWireless":0,"deviceType":"GS10G"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166059486290","deviceName":"59486290-wired","isWireless":0,"deviceType":"GPS303F"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869131070065084","mobile":"","deviceName":"70065084-wired","isWireless":0,"deviceType":"GS12"}  
+[2025-02-12 11:37:48] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844052180855","deviceName":"BEU-663","isWireless":0,"deviceType":"GPS303F","activateTime":1685361242,"platformEndTime":1687961407}  
+[2025-02-12 11:37:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"355710098598597","deviceName":"ASG-276","isWireless":0,"deviceType":"VT08S","activateTime":1685475446,"platformEndTime":1751402797}  
+[2025-02-12 11:37:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864893035680043","deviceName":"H3K-665","isWireless":0,"deviceType":"TK103","activateTime":1686345006,"platformEndTime":1755153214}  
+[2025-02-12 11:37:49] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864895032234062","deviceName":"H1Z-464","isWireless":0,"deviceType":"TK103","activateTime":1685783023,"platformEndTime":1751548207}  
+[2025-02-12 11:37:50] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"359857083009001","deviceName":"H1U-827","isWireless":0,"deviceType":"GV20","activateTime":1687456436,"platformEndTime":1719087907}  
+[2025-02-12 11:37:50] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166055704738","mobile":"","deviceName":"H2G-392","isWireless":0,"deviceType":"GPS303F","activateTime":1708403481,"platformEndTime":1740030905}  
+[2025-02-12 11:37:50] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051043983","deviceName":"F3S-861","isWireless":0,"deviceType":"TK403","activateTime":1689864683,"platformEndTime":1753033815}  
+[2025-02-12 11:37:50] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205550","mobile":"","deviceName":"420-D","isWireless":0,"deviceType":"GS10G","activateTime":1720135365,"platformEndTime":1751675106}  
+[2025-02-12 11:37:51] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051043967","deviceName":"M3S-722","isWireless":0,"deviceType":"TK403","activateTime":1713279786,"platformEndTime":1744819209}  
+[2025-02-12 11:37:51] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051070020","deviceName":"H3M-613","isWireless":0,"deviceType":"GS10G","activateTime":1713708782,"platformEndTime":1745247906}  
+[2025-02-12 11:37:52] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864895032749887","deviceName":"T1M-052","isWireless":0,"deviceType":"GPS303F","activateTime":1713911874,"platformEndTime":1750721407}  
+[2025-02-12 11:37:52] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865011033263519","deviceName":"ARI-050","isWireless":0,"deviceType":"GPS303F","activateTime":1714083379,"platformEndTime":1750893607}  
+[2025-02-12 11:37:52] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663815","deviceName":"B0H-682","isWireless":0,"deviceType":"GPS303F","activateTime":1714086332,"platformEndTime":1750908906}  
+[2025-02-12 11:37:53] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056985179","mobile":"","deviceName":"P3C-086","isWireless":0,"deviceType":"GPS303F","activateTime":1714402812,"platformEndTime":1751229349}  
+[2025-02-12 11:37:53] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051073826","deviceName":"R388H","isWireless":0,"deviceType":"GS10G","activateTime":1715193804,"platformEndTime":1746732305}  
+[2025-02-12 11:37:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844054826406","deviceName":"H2M-618","isWireless":0,"deviceType":"GPS303F","activateTime":1715527206,"platformEndTime":1749784051}  
+[2025-02-12 11:37:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864872030693441","deviceName":"H3L-696","isWireless":0,"deviceType":"GPS303F","activateTime":1715527478,"platformEndTime":1752456557}  
+[2025-02-12 11:37:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056222946","deviceName":"Z6J-273","isWireless":0,"deviceType":"GPS303F","activateTime":1717776506,"platformEndTime":1751915708}  
+[2025-02-12 11:37:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316804","deviceName":"Z6J-272","isWireless":0,"deviceType":"GPS303F","activateTime":1717787548,"platformEndTime":1751952608}  
+[2025-02-12 11:37:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056671875","mobile":"","deviceName":"M2E-336","isWireless":0,"deviceType":"GPS303F","activateTime":1715641897,"platformEndTime":1752413700}  
+[2025-02-12 11:37:54] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316663","mobile":"","deviceName":"H2O-239","isWireless":0,"deviceType":"GPS303F","activateTime":1715715724,"platformEndTime":1749846007}  
+[2025-02-12 11:37:55] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663922","mobile":"","deviceName":"H2T-906","isWireless":0,"deviceType":"GPS303F","activateTime":1718827440,"platformEndTime":1750379706}  
+[2025-02-12 11:37:55] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316580","mobile":"","deviceName":"T7M-104","isWireless":0,"deviceType":"GPS303F","activateTime":1718894321,"platformEndTime":1750455008}  
+[2025-02-12 11:37:55] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057316689","mobile":"","deviceName":"H2X-817","isWireless":0,"deviceType":"GPS303F","activateTime":1719077999,"platformEndTime":1750617008}  
+[2025-02-12 11:37:56] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166057317190","mobile":"","deviceName":"H2T-170","isWireless":0,"deviceType":"GPS303F","activateTime":1719269365,"platformEndTime":1750815906}  
+[2025-02-12 11:37:56] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166058968868","mobile":"","deviceName":"TBM-857","isWireless":0,"deviceType":"GPS303F","activateTime":1719444550,"platformEndTime":1750988106}  
+[2025-02-12 11:37:57] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166058968835","mobile":"","deviceName":"TDB-832","isWireless":0,"deviceType":"GPS303F","activateTime":1719693845,"platformEndTime":1751233505}  
+[2025-02-12 11:37:57] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166059488981","mobile":"","deviceName":"CMU277","isWireless":0,"deviceType":"GPS303F","activateTime":1727455944,"platformEndTime":1759006820}  
+[2025-02-12 11:37:57] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663948","mobile":"","deviceName":"AZH-706","isWireless":0,"deviceType":"GPS303F","activateTime":1734968042,"platformEndTime":1766507710}  
+[2025-02-12 11:37:58] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864180035624142","deviceName":"F4N-236","isWireless":0,"deviceType":"GPS303F","activateTime":1736694738,"platformEndTime":1768239307}  
+[2025-02-12 11:37:58] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166059488973","deviceName":"TAU-888","isWireless":0,"deviceType":"GPS303F","activateTime":1737069072,"platformEndTime":1768611909}  
+[2025-02-12 11:37:58] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"867144060264767","deviceName":"RETROEXCAVADORA","isWireless":0,"deviceType":"GS10G","activateTime":1738361511,"platformEndTime":1769901306}  
+[2025-02-12 11:37:59] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166052398740","deviceName":"BFY-902","isWireless":0,"deviceType":"GPS303F","activateTime":1687815403,"platformEndTime":1751126763}  
+[2025-02-12 11:37:59] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172513932","deviceName":"H2P-066","isWireless":0,"deviceType":"ST-906","activateTime":1690121377,"platformEndTime":1753287904}  
+[2025-02-12 11:38:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844052179212","deviceName":"52179212-wired","isWireless":0,"deviceType":"GPS303F","activateTime":1708528260,"platformEndTime":1740165910}  
+[2025-02-12 11:38:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350544508740365","mobile":"","deviceName":"P3Q-487","isWireless":0,"deviceType":"FMB920","activateTime":1708374252,"platformEndTime":1739997303}  
+[2025-02-12 11:38:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057025564","deviceName":"CJK-653","isWireless":0,"deviceType":"GT06N","activateTime":1708417660,"platformEndTime":1740040504}  
+[2025-02-12 11:38:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"350317173119417","deviceName":"H1S-095","isWireless":0,"deviceType":"FMB920","activateTime":1709194502,"platformEndTime":1743323406}  
+[2025-02-12 11:38:00] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166052398815","deviceName":"M2K-593","isWireless":0,"deviceType":"GPS303F","activateTime":1708892487,"platformEndTime":1743121242}  
+[2025-02-12 11:38:01] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050803785","mobile":"","deviceName":"T4B-464","isWireless":0,"deviceType":"GS10G","activateTime":1709685954,"platformEndTime":1741226709}  
+[2025-02-12 11:38:01] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050803892","deviceName":"T8I-857","isWireless":0,"deviceType":"GS10G","activateTime":1710079947,"platformEndTime":1741620304}  
+[2025-02-12 11:38:01] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050805582","mobile":"+436761723368534","deviceName":"F5P-865","isWireless":0,"deviceType":"GS10G","activateTime":1710080737,"platformEndTime":1741620607}  
+[2025-02-12 11:38:02] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806374","mobile":"","deviceName":"F6D-603","isWireless":0,"deviceType":"GS10G","activateTime":1710292755,"platformEndTime":1741831808}  
+[2025-02-12 11:38:02] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051046697","deviceName":"TAV-849","isWireless":0,"deviceType":"TK403","activateTime":1711121818,"platformEndTime":1750527016}  
+[2025-02-12 11:38:02] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865413051725686","deviceName":"H2T-870","isWireless":0,"deviceType":"FMC920","activateTime":1710951648,"platformEndTime":1750362308}  
+[2025-02-12 11:38:02] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806341","deviceName":"BEO-900","isWireless":0,"deviceType":"GS10G","activateTime":1710343919,"platformEndTime":1741881305}  
+[2025-02-12 11:38:02] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051074246","deviceName":"T4H-820","isWireless":0,"deviceType":"GS10G","activateTime":1717534915,"platformEndTime":1749081905}  
+[2025-02-12 11:38:03] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205535","mobile":"","deviceName":"BWC-588","isWireless":0,"deviceType":"GS10G","activateTime":1718476293,"platformEndTime":1750014007}  
+[2025-02-12 11:38:03] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865190070105468","mobile":"","deviceName":"TAD-822","isWireless":0,"deviceType":"GS900","activateTime":1734272783,"platformEndTime":1765813814}  
+[2025-02-12 11:38:03] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869131070062982","mobile":"","deviceName":"D3E-944","isWireless":0,"deviceType":"GS12","activateTime":1734969773,"platformEndTime":1766513413}  
+[2025-02-12 11:38:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172513996","deviceName":"H2Y-625","isWireless":0,"deviceType":"ST-906","activateTime":1690232314,"platformEndTime":1721879106}  
+[2025-02-12 11:38:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899054774073","deviceName":"H2T-363","isWireless":0,"deviceType":"GT06N","activateTime":1690257606,"platformEndTime":1721881054}  
+[2025-02-12 11:38:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056663724","deviceName":"BYN-314","isWireless":0,"deviceType":"GPS303F","activateTime":1690060063,"platformEndTime":1721698503}  
+[2025-02-12 11:38:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"864035051046119","mobile":"","deviceName":"420-D","isWireless":0,"deviceType":"GPS303F","activateTime":1708811650,"platformEndTime":1719680823}  
+[2025-02-12 11:38:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"868166056985302","mobile":"","deviceName":"AWZ-850","isWireless":0,"deviceType":"GPS303F","activateTime":1709058844,"platformEndTime":1751380256}  
+[2025-02-12 11:38:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"863844056664102","mobile":"","deviceName":"T6M-457","isWireless":0,"deviceType":"GPS303F","activateTime":1691279829,"platformEndTime":1722908404}  
+[2025-02-12 11:38:04] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051074097","mobile":"436761723368523","deviceName":"H2E-888","isWireless":0,"deviceType":"GS10G","activateTime":1714252994,"platformEndTime":1745796607}  
+[2025-02-12 11:38:05] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"351608080042026","deviceName":"H2A-726","isWireless":0,"deviceType":"GT06N","activateTime":1714673084,"platformEndTime":1751458231}  
+[2025-02-12 11:38:05] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"351969560682818","deviceName":"F4P-326","isWireless":0,"deviceType":"GT06N","activateTime":1715094690,"platformEndTime":1749784110}  
+[2025-02-12 11:38:06] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051206541","mobile":"","deviceName":"BVL-331","isWireless":0,"deviceType":"GS10G","activateTime":1718377230,"platformEndTime":1749915907}  
+[2025-02-12 11:38:06] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468050806622","mobile":"","deviceName":"Max TRCH","isWireless":0,"deviceType":"GS10G","activateTime":1709135682,"platformEndTime":1740675304}  
+[2025-02-12 11:38:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"000009172504738","mobile":"+436761723368562","deviceName":"246D-02365","isWireless":0,"deviceType":"ST-906","activateTime":1709069273,"platformEndTime":1740694806}  
+[2025-02-12 11:38:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"357073292898455","deviceName":"Retro 1","isWireless":0,"deviceType":"FMB920","activateTime":1712261466,"platformEndTime":1751663706}  
+[2025-02-12 11:38:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"357544378310961","deviceName":"Retro 2","isWireless":0,"deviceType":"FMB920","activateTime":1712198412,"platformEndTime":1751600705}  
+[2025-02-12 11:38:07] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"358899057034145","deviceName":"H1J-109","isWireless":0,"deviceType":"GT06N","activateTime":1719675205,"platformEndTime":1751211608}  
+[2025-02-12 11:38:08] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205113","mobile":"","deviceName":"H3A-904","isWireless":0,"deviceType":"GS10G","activateTime":1720629055,"platformEndTime":1752178506}  
+[2025-02-12 11:38:08] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205162","deviceName":"H3G-800","isWireless":0,"deviceType":"GS10G","activateTime":1720046302,"platformEndTime":1751587506}  
+[2025-02-12 11:38:08] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205303","deviceName":"AWN-297","isWireless":0,"deviceType":"GS10G","activateTime":1724852937,"platformEndTime":1756408509}  
+[2025-02-12 11:38:08] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205527","mobile":"","deviceName":"H2U-617","isWireless":0,"deviceType":"GS10G","activateTime":1722716275,"platformEndTime":1754255706}  
+[2025-02-12 11:38:09] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051201989","mobile":"","deviceName":"BEA-748","isWireless":0,"deviceType":"GS10G","activateTime":1725504516,"platformEndTime":1757043613}  
+[2025-02-12 11:38:09] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051072158","mobile":"","deviceName":"BCK-237","isWireless":0,"deviceType":"GS10G","activateTime":1726331031,"platformEndTime":1757872216}  
+[2025-02-12 11:38:09] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205030","deviceName":"LZ-YW-41","isWireless":0,"deviceType":"GS10G","activateTime":1722915310,"platformEndTime":1754454907}  
+[2025-02-12 11:38:10] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869671071357279","deviceName":"H1N-201","isWireless":0,"deviceType":"Eco5","activateTime":1727072107,"platformEndTime":1758612014}  

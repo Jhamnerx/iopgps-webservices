@@ -14,7 +14,8 @@
                             <!-- Logo -->
                             <a href="{{ route('login') }}" class="mx-auto">
 
-                                <img src="{{ Vite::asset('resources/images/logo-2-1.png') }}" alt="">
+                                <img src="{{ Vite::asset('resources/images/logo-2-1.png') }}" alt=""
+                                    width="320" height="80" />
                             </a>
                         </div>
                     </div>

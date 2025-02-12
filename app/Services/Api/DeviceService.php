@@ -123,20 +123,21 @@ class DeviceService
         $existingDevices = Devices::where('account_id', $accountId)->get()->keyBy('imei');
 
         foreach ($devices as $device) {
-            Log::info("Procesando dispositivo: " . json_encode($device));
+
             $existingDevice = $existingDevices->get($device['imei']);
 
             if ($existingDevice) {
                 // Solo actualizar los campos permitidos
-                // $existingDevice->update([
-                //     'id_api' => $device['imei'],
-                //     'account_id' => $accountId,
-                //     'name' => $device['deviceName'] ?? null,
-                // ]);
+                $existingDevice->update([
+                    'id_api' => $device['imei'],
+                    'account_id' => $accountId,
+                    'name' => $device['deviceName'] ?? null,
+                ]);
                 // Eliminar el dispositivo de la lista de dispositivos existentes
                 $existingDevices->forget($device['imei']);
             } else {
                 // Crear un nuevo dispositivo con todos los campos
+                Log::info("Creando nuevo dispositivo: " . json_encode($device));
                 Devices::create([
                     'id_api' => $device['imei'],
                     'account_id' => $accountId,

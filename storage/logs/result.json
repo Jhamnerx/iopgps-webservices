@@ -1,0 +1,80 @@
+{
+    "code": 0,
+    "data": [
+        {
+            "imei": "355710098598597",
+            "status": "\u9759\u6b62",
+            "location": {
+                "lng": "-80.688883",
+                "lat": "-5.170835"
+            },
+            "speed": 0,
+            "course": 123,
+            "accStatus": false,
+            "licenseNumber": "ASG-276",
+            "endTime": 1751402797,
+            "platformEndTime": 1751402797,
+            "activateTime": 1685475446,
+            "statusTimeDesc": "27\u520627\u79d2",
+            "signalTime": 1739320164,
+            "gpsTime": 1739318522,
+            "positionType": "GPS",
+            "isWireless": 0,
+            "account": {
+                "accountId": 10328756,
+                "accountName": "FERNAN",
+                "userName": "NU\u00d1EZ JIMENEZ LUIS F."
+            }
+        },
+        {
+            "imei": "864895032234062",
+            "status": "\u9759\u6b62",
+            "location": {
+                "lng": "-78.566972",
+                "lat": "-9.087330"
+            },
+            "speed": 1,
+            "course": 0,
+            "accStatus": false,
+            "licenseNumber": "H1Z-464",
+            "endTime": 1751548207,
+            "platformEndTime": 1751548207,
+            "activateTime": 1685783023,
+            "statusTimeDesc": "2\u520611\u79d2",
+            "signalTime": 1739320119,
+            "gpsTime": 1739320038,
+            "positionType": "GPS",
+            "isWireless": 0,
+            "account": {
+                "accountId": 10330894,
+                "accountName": "MONWEN",
+                "userName": "WENDY A. AGUILAR MONTERO"
+            }
+        },
+        {
+            "imei": "864893035680043",
+            "status": "\u884c\u9a76",
+            "location": {
+                "lng": "-78.569581",
+                "lat": "-9.081347"
+            },
+            "speed": 15,
+            "course": 90,
+            "accStatus": true,
+            "licenseNumber": "H3K-665",
+            "endTime": 1755153214,
+            "platformEndTime": 1755153214,
+            "activateTime": 1686345006,
+            "statusTimeDesc": "4\u520626\u79d2",
+            "signalTime": 1739320157,
+            "gpsTime": 1739320152,
+            "positionType": "GPS",
+            "isWireless": 0,
+            "account": {
+                "accountId": 10330894,
+                "accountName": "MONWEN",
+                "userName": "WENDY A. AGUILAR MONTERO"
+            }
+        }
+    ]
+}

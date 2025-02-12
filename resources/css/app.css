@@ -1,0 +1,43 @@
+@import "flatpickr/dist/flatpickr.min.css";
+@import "tom-select/dist/css/tom-select.bootstrap5.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "additional-styles/utility-patterns.css";
+@import "additional-styles/flatpickr.css";
+
+@import "filepond/dist/filepond.min.css";
+@import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+@import "additional-styles/toggle-switch.scss";
+
+[x-cloak] {
+    display: none;
+}
+
+.sidebar li a:before {
+    left: 34px;
+    width: 7px;
+    height: 7px;
+    border: 1px solid #b3becf;
+    content: "";
+    position: absolute;
+    margin-top: 7px;
+    display: block;
+    border-radius: 50%;
+    transition: all 0.15s linear;
+}
+.sidebar-chilren li a:before {
+    left: 60px;
+    width: 7px;
+    height: 7px;
+}
+
+.separator-title {
+    position: relative;
+    color: #303133;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

@@ -14,8 +14,8 @@ class AuthTokenService
 
     public function __construct()
     {
-        $this->appid = env('IOPGPS_APPID', 'tu-appid');
-        $this->key = env('IOPGPS_KEY', 'tu-secret-key');
+        $this->appid = config('app.IOPGPS_APPID', 'tu-appid');
+        $this->key = config('app.IOPGPS_KEY', 'tu-secret-key');
         $this->authUrl = 'https://open.iopgps.com/api/auth';
     }
 

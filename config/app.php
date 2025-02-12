@@ -15,6 +15,10 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'IOPGPS_APPID' => env('IOPGPS_APPID', 'tu-appid'),
+    'IOPGPS_KEY' => env('IOPGPS_KEY', 'tu-secret-key'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

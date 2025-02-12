@@ -123,6 +123,7 @@ class DeviceService
         $existingDevices = Devices::where('account_id', $accountId)->get()->keyBy('imei');
 
         foreach ($devices as $device) {
+            Log::info("Procesando dispositivo: " . json_encode($device));
             $existingDevice = $existingDevices->get($device['imei']);
 
             if ($existingDevice) {

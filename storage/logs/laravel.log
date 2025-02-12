@@ -91,3 +91,4 @@
 #20 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
 #21 {main}
 "} 
+[2025-02-12 11:06:09] local.ERROR: No hay accessToken disponible en Redis.  

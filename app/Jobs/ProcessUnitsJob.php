@@ -53,6 +53,13 @@ class ProcessUnitsJob implements ShouldQueue
             $result = array_merge($result, $partialResult);
         }
 
+
+        // Verificar si $result tiene datos
+        if (empty($result['data'])) {
+            Log::info('No se encontraron datos para los dispositivos.');
+            return;
+        }
+
         Log::info('Procesando unidades:' . json_encode($result));
 
         $processor = new Processor();

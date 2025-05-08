@@ -63,17 +63,27 @@ class DeviceStatusService
                 return ['error' => 'Respuesta inesperada de la API'];
             }
 
+            // Log completo de la respuesta para depuración
+            Log::info('Partial result: ', $body);
+
             if ($body['code'] !== 0) {
                 Log::error("Error en respuesta API", ['response' => $body]);
                 return ['error' => $body['result'] ?? 'Error desconocido'];
             }
 
+            // Verificar si body tiene la clave 'data' y no está vacía
+            if (!isset($body['data']) || empty($body['data'])) {
+                Log::info("No se encontraron datos para los dispositivos.");
+                return ['code' => 0, 'data' => []];
+            }
+
+            // Si tiene datos, formatearlos
             return $this->formatResponse($body['data']);
         } catch (RequestException | GuzzleException $e) {
             Log::error("Error al conectar con la API de estado de dispositivos", ['message' => $e->getMessage()]);
             return ['error' => 'Error al conectar con la API'];
         } catch (\Exception $e) {
-            Log::error("Error inesperado", ['message' => $e->getMessage()]);
+            Log::error("Error inesperado", ['message' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
             return ['error' => 'Error inesperado'];
         }
     }

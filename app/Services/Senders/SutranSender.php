@@ -156,7 +156,7 @@ class SutranSender implements UnitSenderInterface
         DB::transaction(function () use ($totalSent, $successCount, $errorCount) {
             $counterService = $this->config->counterServices()->firstOrCreate(
                 [
-                    'serviceable_type' => Devices::class,
+                    'serviceable_type' => Config::class,
                     'serviceable_id' => $this->config->id,
                 ],
                 ['data' => []]

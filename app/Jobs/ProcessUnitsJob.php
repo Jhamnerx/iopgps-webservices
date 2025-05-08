@@ -43,34 +43,45 @@ class ProcessUnitsJob implements ShouldQueue
 
         $chunks = array_chunk($combinedDevices, 10);
 
-        $result = [];
+        // Inicializar el resultado con la estructura correcta
+        $result = ['code' => 0, 'data' => []];
+
         foreach ($chunks as $chunk) {
             $imeis = implode(',', array_map('intval', array_values($chunk)));
 
             $partialResult = $this->deviceStatusService->fetchDeviceStatus($chunk);
+            Log::info('Procesando chunk de ' . count($chunk) . ' dispositivos');
 
-
-            $result = array_merge($result, $partialResult);
+            // Verificar si partialResult tiene datos antes de intentar fusionarlos
+            if (!empty($partialResult['data'])) {
+                // Combinar solo los datos dentro de la clave 'data'
+                $result['data'] = array_merge($result['data'], $partialResult['data']);
+                Log::info('Combinando datos parciales. Total acumulado: ' . count($result['data']));
+            } else {
+                Log::info('No se encontraron datos para este chunk de dispositivos.');
+            }
         }
-
 
         // Verificar si $result tiene datos
         if (empty($result['data'])) {
-            Log::info('No se encontraron datos para los dispositivos.');
+            Log::info('No se encontraron datos para ninguno de los dispositivos.');
             return;
         }
 
-        Log::info('Procesando unidades:' . json_encode($result));
+        Log::info('Total de dispositivos acumulados para procesar: ' . count($result['data']));
 
+        // Enviar los resultados acumulados al procesador
         $processor = new Processor();
         $processedUnits = $processor->processUnits($result);
 
         if (!empty($processedUnits['sutran'])) {
             SendToSutranJob::dispatch($processedUnits['sutran']);
+            Log::info('Enviados ' . count($processedUnits['sutran']) . ' dispositivos a Sutran');
         }
 
         if (!empty($processedUnits['osinergmin'])) {
             SendToOsinergminJob::dispatch($processedUnits['osinergmin']);
+            Log::info('Enviados ' . count($processedUnits['osinergmin']) . ' dispositivos a Osinergmin');
         }
     }
 

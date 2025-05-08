@@ -34,7 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $schedule->command('api:get')->everyThirtySeconds()->runInBackground();
         $schedule->command('iopgps:refresh-token')->hourly()->runInBackground();
-        $schedule->job(new ClearLogs(30))->daily();
+        $schedule->job(new ClearLogs(1))->daily();
         $schedule->job(new CheckDevicesExists())->daily();
     })
     ->withExceptions(function (Exceptions $exceptions) {})->create();

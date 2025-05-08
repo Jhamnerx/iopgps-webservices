@@ -392,3 +392,243 @@
 [2025-02-12 11:38:09] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051072158","mobile":"","deviceName":"BCK-237","isWireless":0,"deviceType":"GS10G","activateTime":1726331031,"platformEndTime":1757872216}  
 [2025-02-12 11:38:09] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"865468051205030","deviceName":"LZ-YW-41","isWireless":0,"deviceType":"GS10G","activateTime":1722915310,"platformEndTime":1754454907}  
 [2025-02-12 11:38:10] local.INFO: Creando nuevo dispositivo: {"code":0,"imei":"869671071357279","deviceName":"H1N-201","isWireless":0,"deviceType":"Eco5","activateTime":1727072107,"platformEndTime":1758612014}  
+[2025-05-07 20:25:00] local.ERROR: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart)) at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(979): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(958): Illuminate\\Database\\Connection->tryAgainIfCausedByLostConnection(Object(Illuminate\\Database\\QueryException), 'select * from `...', Array, Object(Closure))
+#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(781): Illuminate\\Database\\Connection->handleQueryException(Object(Illuminate\\Database\\QueryException), 'select * from `...', Array, Object(Closure))
+#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(398): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#4 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3133): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3118): Illuminate\\Database\\Query\\Builder->runSelect()
+#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3706): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3117): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\DatabaseStore.php(130): Illuminate\\Database\\Query\\Builder->get()
+#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\DatabaseStore.php(105): Illuminate\\Cache\\DatabaseStore->many(Array)
+#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\Repository.php(117): Illuminate\\Cache\\DatabaseStore->get('illuminate:queu...')
+#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(714): Illuminate\\Cache\\Repository->get('illuminate:queu...')
+#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(703): Illuminate\\Queue\\Worker->getTimestampOfLastQueueRestart()
+#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(309): Illuminate\\Queue\\Worker->queueShouldRestart(NULL)
+#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(194): Illuminate\\Queue\\Worker->stopIfNecessary(Object(Illuminate\\Queue\\WorkerOptions), NULL, 43057.8569861, 0, NULL)
+#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(149): Illuminate\\Queue\\Worker->daemon('redis', 'default', Object(Illuminate\\Queue\\WorkerOptions))
+#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(132): Illuminate\\Queue\\Console\\WorkCommand->runWorker('redis', 'default')
+#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
+#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
+#23 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#31 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:66)
+[stacktrace]
+#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(66): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(44): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(185): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1231): call_user_func(Object(Closure))
+#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1267): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(512): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(407): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from `...', Array)
+#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(979): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(958): Illuminate\\Database\\Connection->tryAgainIfCausedByLostConnection(Object(Illuminate\\Database\\QueryException), 'select * from `...', Array, Object(Closure))
+#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(781): Illuminate\\Database\\Connection->handleQueryException(Object(Illuminate\\Database\\QueryException), 'select * from `...', Array, Object(Closure))
+#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(398): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3133): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3118): Illuminate\\Database\\Query\\Builder->runSelect()
+#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3706): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3117): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\DatabaseStore.php(130): Illuminate\\Database\\Query\\Builder->get()
+#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\DatabaseStore.php(105): Illuminate\\Cache\\DatabaseStore->many(Array)
+#20 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\Repository.php(117): Illuminate\\Cache\\DatabaseStore->get('illuminate:queu...')
+#21 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(714): Illuminate\\Cache\\Repository->get('illuminate:queu...')
+#22 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(703): Illuminate\\Queue\\Worker->getTimestampOfLastQueueRestart()
+#23 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(309): Illuminate\\Queue\\Worker->queueShouldRestart(NULL)
+#24 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(194): Illuminate\\Queue\\Worker->stopIfNecessary(Object(Illuminate\\Queue\\WorkerOptions), NULL, 43057.8569861, 0, NULL)
+#25 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(149): Illuminate\\Queue\\Worker->daemon('redis', 'default', Object(Illuminate\\Queue\\WorkerOptions))
+#26 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(132): Illuminate\\Queue\\Console\\WorkCommand->runWorker('redis', 'default')
+#27 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
+#28 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#29 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#30 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#31 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#32 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
+#33 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#34 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#35 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#37 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#41 {main}
+"} 
+[2025-05-07 20:25:02] local.ERROR: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt, illuminate:cache:flexible:created:illuminate:schedule:interrupt)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt, illuminate:cache:flexible:created:illuminate:schedule:interrupt)) at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:825)
+[stacktrace]
+#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(584): Illuminate\\Database\\Connection->run('delete from `ca...', Array, Object(Closure))
+#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(548): Illuminate\\Database\\Connection->affectingStatement('delete from `ca...', Array)
+#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(4066): Illuminate\\Database\\Connection->delete('delete from `ca...', Array)
+#4 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\DatabaseStore.php(387): Illuminate\\Database\\Query\\Builder->delete()
+#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\DatabaseStore.php(362): Illuminate\\Cache\\DatabaseStore->forgetMany(Array)
+#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\Repository.php(534): Illuminate\\Cache\\DatabaseStore->forget('illuminate:sche...')
+#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Scheduling\\ScheduleRunCommand.php(280): Illuminate\\Cache\\Repository->forget('illuminate:sche...')
+#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Scheduling\\ScheduleRunCommand.php(120): Illuminate\\Console\\Scheduling\\ScheduleRunCommand->clearInterruptSignal()
+#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Console\\Scheduling\\ScheduleRunCommand->handle(Object(Illuminate\\Console\\Scheduling\\Schedule), Object(Illuminate\\Events\\Dispatcher), Object(Illuminate\\Cache\\Repository), Object(NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler))
+#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
+#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Console\\Scheduling\\ScheduleRunCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#23 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:66)
+[stacktrace]
+#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(66): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(44): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(185): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1231): call_user_func(Object(Closure))
+#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(592): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(812): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('delete from `ca...', Array)
+#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('delete from `ca...', Array, Object(Closure))
+#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(584): Illuminate\\Database\\Connection->run('delete from `ca...', Array, Object(Closure))
+#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(548): Illuminate\\Database\\Connection->affectingStatement('delete from `ca...', Array)
+#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(4066): Illuminate\\Database\\Connection->delete('delete from `ca...', Array)
+#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\DatabaseStore.php(387): Illuminate\\Database\\Query\\Builder->delete()
+#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\DatabaseStore.php(362): Illuminate\\Cache\\DatabaseStore->forgetMany(Array)
+#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Cache\\Repository.php(534): Illuminate\\Cache\\DatabaseStore->forget('illuminate:sche...')
+#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Scheduling\\ScheduleRunCommand.php(280): Illuminate\\Cache\\Repository->forget('illuminate:sche...')
+#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Scheduling\\ScheduleRunCommand.php(120): Illuminate\\Console\\Scheduling\\ScheduleRunCommand->clearInterruptSignal()
+#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Console\\Scheduling\\ScheduleRunCommand->handle(Object(Illuminate\\Console\\Scheduling\\Schedule), Object(Illuminate\\Events\\Dispatcher), Object(Illuminate\\Cache\\Repository), Object(NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler))
+#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
+#23 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Console\\Scheduling\\ScheduleRunCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#31 {main}
+"} 
+[2025-05-07 20:25:41] local.ERROR: No hay accessToken disponible en Redis.  
+[2025-05-07 20:27:39] local.INFO: No se encontraron datos para los dispositivos.  
+[2025-05-07 20:27:39] local.INFO: No se encontraron datos para los dispositivos.  
+[2025-05-07 20:27:39] local.INFO: No se encontraron datos para los dispositivos.  
+[2025-05-07 20:27:39] local.INFO: No se encontraron datos para los dispositivos.  
+[2025-05-07 20:28:03] local.INFO: No se encontraron datos para los dispositivos.  
+[2025-05-07 20:28:35] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"864895032234062","status":"\u884c\u9a76","location":{"lng":"-78.589618","lat":"-9.078827"},"speed":13,"course":36,"accStatus":false,"licenseNumber":"H1Z-464","endTime":1751548207,"platformEndTime":1751548207,"activateTime":1685783023,"statusTimeDesc":"3\u520628\u79d2","signalTime":1746667698,"gpsTime":1746667698,"positionType":"GPS","isWireless":0,"account":{"accountId":10330894,"accountName":"MONWEN","userName":"WENDY A. AGUILAR MONTERO"}},{"imei":"864893035680043","status":"\u884c\u9a76","location":{"lng":"-78.585181","lat":"-9.060839"},"speed":13,"course":229,"accStatus":true,"licenseNumber":"H3K-665","endTime":1755153214,"platformEndTime":1755153214,"activateTime":1686345006,"statusTimeDesc":"2\u520658\u79d2","signalTime":1746667703,"gpsTime":1746667695,"positionType":"GPS","isWireless":0,"account":{"accountId":10330894,"accountName":"MONWEN","userName":"WENDY A. AGUILAR MONTERO"}}]}  
+[2025-05-07 20:28:35] local.INFO: Procesando unidad: 864895032234062-121490.48333333  
+[2025-05-07 20:28:35] local.INFO: Procesando unidad: 864893035680043-121490.56666667  
+[2025-05-07 20:28:39] local.ERROR: Error en respuesta API {"response":{"code":57040,"result":"时间跨度不能超过1个月","message":"时间跨度不能超过1个月"}} 
+[2025-05-07 20:28:39] local.ERROR: Error al reenviar historial: Undefined array key "data"  
+[2025-05-07 20:28:40] local.ERROR: Error en respuesta API {"response":{"code":57040,"result":"时间跨度不能超过1个月","message":"时间跨度不能超过1个月"}} 
+[2025-05-07 20:28:40] local.ERROR: Error al reenviar historial: Undefined array key "data"  
+[2025-05-07 20:29:04] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"868166056985179","status":"\u9759\u6b62","location":{"lng":"-78.598755","lat":"-9.070127"},"speed":0,"course":0,"accStatus":false,"licenseNumber":"P3C-086","endTime":1751229349,"platformEndTime":1751229349,"activateTime":1714402812,"statusTimeDesc":"7\u65f644\u520653\u79d2","signalTime":1746667723,"gpsTime":1746667709,"positionType":"GPS","isWireless":0,"account":{"accountId":10408904,"accountName":"ANGELICAYNU","userName":"ANGELICA Y. NU\u00d1EZ RODRIGUEZ"}}]}  
+[2025-05-07 20:29:04] local.INFO: Procesando unidad: 868166056985179-121490.83333333  
+[2025-05-07 20:29:09] local.ERROR: Error en respuesta API {"response":{"code":57040,"result":"时间跨度不能超过1个月","message":"时间跨度不能超过1个月"}} 
+[2025-05-07 20:29:09] local.ERROR: Error al reenviar historial: Undefined array key "data"  
+[2025-05-07 20:29:34] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"868166056985179","status":"\u9759\u6b62","location":{"lng":"-78.598755","lat":"-9.070127"},"speed":0,"course":0,"accStatus":false,"licenseNumber":"P3C-086","endTime":1751229349,"platformEndTime":1751229349,"activateTime":1714402812,"statusTimeDesc":"7\u65f645\u520623\u79d2","signalTime":1746667723,"gpsTime":1746667709,"positionType":"GPS","isWireless":0,"account":{"accountId":10408904,"accountName":"ANGELICAYNU","userName":"ANGELICA Y. NU\u00d1EZ RODRIGUEZ"}}]}  
+[2025-05-07 20:29:34] local.INFO: Procesando unidad: 868166056985179-121490.83333333  
+[2025-05-07 20:29:37] local.ERROR: Error en respuesta API {"response":{"code":57040,"result":"时间跨度不能超过1个月","message":"时间跨度不能超过1个月"}} 
+[2025-05-07 20:29:37] local.ERROR: Error al reenviar historial: Undefined array key "data"  
+[2025-05-07 20:30:01] local.INFO: No se encontraron datos para los dispositivos.  
+[2025-05-07 20:30:33] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"869131070282507","status":"\u9759\u6b62","location":{"lng":"-78.562594","lat":"-9.086726"},"speed":0,"course":259,"accStatus":true,"licenseNumber":"THZ-976","endTime":1777663509,"platformEndTime":1777663509,"activateTime":1746123770,"statusTimeDesc":"8\u520639\u79d2","signalTime":1746667824,"gpsTime":1746667814,"positionType":"GPS","isWireless":0,"account":{"accountId":10538470,"accountName":"TRASP.TAUROSR","userName":"TRANSPORTES TAURO S.R.L"}}]}  
+[2025-05-07 20:30:33] local.INFO: Procesando unidad: 869131070282507-2858.5833333333  
+[2025-05-07 20:31:02] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"869131070282507","status":"\u9759\u6b62","location":{"lng":"-78.562609","lat":"-9.086744"},"speed":0,"course":259,"accStatus":true,"licenseNumber":"THZ-976","endTime":1777663509,"platformEndTime":1777663509,"activateTime":1746123770,"statusTimeDesc":"9\u52067\u79d2","signalTime":1746667854,"gpsTime":1746667854,"positionType":"GPS","isWireless":0,"account":{"accountId":10538470,"accountName":"TRASP.TAUROSR","userName":"TRANSPORTES TAURO S.R.L"}}]}  
+[2025-05-07 20:31:02] local.INFO: Procesando unidad: 869131070282507-2859.0833333333  
+[2025-05-07 20:41:36] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"869131070282507","status":"\u9759\u6b62","location":{"lng":"-78.562573","lat":"-9.086749"},"speed":0,"course":63,"accStatus":true,"licenseNumber":"THZ-976","endTime":1777663509,"platformEndTime":1777663509,"activateTime":1746123770,"statusTimeDesc":"19\u520641\u79d2","signalTime":1746668493,"gpsTime":1746668493,"positionType":"GPS","isWireless":0,"account":{"accountId":10538470,"accountName":"TRASP.TAUROSR","userName":"TRANSPORTES TAURO S.R.L"}}]}  
+[2025-05-07 20:41:36] local.INFO: Procesando unidad: 869131070282507-2869.7333333333  
+[2025-05-07 20:41:43] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"869131070282507","status":"\u9759\u6b62","location":{"lng":"-78.562573","lat":"-9.086749"},"speed":0,"course":63,"accStatus":true,"licenseNumber":"THZ-976","endTime":1777663509,"platformEndTime":1777663509,"activateTime":1746123770,"statusTimeDesc":"19\u520649\u79d2","signalTime":1746668495,"gpsTime":1746668493,"positionType":"GPS","isWireless":0,"account":{"accountId":10538470,"accountName":"TRASP.TAUROSR","userName":"TRANSPORTES TAURO S.R.L"}}]}  
+[2025-05-07 20:41:43] local.INFO: Procesando unidad: 869131070282507-2869.7666666667  
+[2025-05-07 20:41:45] local.INFO: Procesando unidades:{"code":0,"data":[{"imei":"869131070282507","status":"\u9759\u6b62","location":{"lng":"-78.562573","lat":"-9.086749"},"speed":0,"course":63,"accStatus":true,"licenseNumber":"THZ-976","endTime":1777663509,"platformEndTime":1777663509,"activateTime":1746123770,"statusTimeDesc":"19\u520651\u79d2","signalTime":1746668495,"gpsTime":1746668493,"positionType":"GPS","isWireless":0,"account":{"accountId":10538470,"accountName":"TRASP.TAUROSR","userName":"TRANSPORTES TAURO S.R.L"}}]}  
+[2025-05-07 20:41:45] local.INFO: Procesando unidad: 869131070282507-2869.7666666667  
+[2025-05-07 20:53:53] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  
+[2025-05-07 20:53:53] local.INFO: Procesando unidad: 869131070282507-2881.9666666667  
+[2025-05-07 20:53:55] local.INFO: Procesando unidad: 869131070282507-2881.9666666667  
+[2025-05-07 20:53:57] local.INFO: Procesando unidad: 869131070282507-2882.0666666667  
+[2025-05-07 20:53:59] local.INFO: Procesando unidad: 869131070282507-2882.0666666667  
+[2025-05-07 20:54:00] local.INFO: Procesando unidad: 869131070282507-2882.0666666667  
+[2025-05-07 20:54:00] local.ERROR: App\Jobs\ProcessUnitsJob has been attempted too many times. {"exception":"[object] (Illuminate\\Queue\\MaxAttemptsExceededException(code: 0): App\\Jobs\\ProcessUnitsJob has been attempted too many times. at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\MaxAttemptsExceededException.php:24)
+[stacktrace]
+#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(794): Illuminate\\Queue\\MaxAttemptsExceededException::forJob(Object(Illuminate\\Queue\\Jobs\\RedisJob))
+#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(528): Illuminate\\Queue\\Worker->maxAttemptsExceededException(Object(Illuminate\\Queue\\Jobs\\RedisJob))
+#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(431): Illuminate\\Queue\\Worker->markJobAsFailedIfAlreadyExceedsMaxAttempts('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), 1)
+#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(392): Illuminate\\Queue\\Worker->process('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), Object(Illuminate\\Queue\\WorkerOptions))
+#4 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(178): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\RedisJob), 'redis', Object(Illuminate\\Queue\\WorkerOptions))
+#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(149): Illuminate\\Queue\\Worker->daemon('redis', 'web-services', Object(Illuminate\\Queue\\WorkerOptions))
+#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(132): Illuminate\\Queue\\Console\\WorkCommand->runWorker('redis', 'web-services')
+#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
+#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
+#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#21 {main}
+"} 
+[2025-05-07 20:54:02] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  
+[2025-05-07 20:54:02] local.INFO: Procesando unidad: 869131070282507-2882.0666666667  
+[2025-05-07 20:54:04] local.INFO: Procesando unidad: 869131070282507-2882.0666666667  
+[2025-05-07 20:54:10] local.ERROR: App\Jobs\ReenviarHistorial has been attempted too many times. {"exception":"[object] (Illuminate\\Queue\\MaxAttemptsExceededException(code: 0): App\\Jobs\\ReenviarHistorial has been attempted too many times. at C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\MaxAttemptsExceededException.php:24)
+[stacktrace]
+#0 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(794): Illuminate\\Queue\\MaxAttemptsExceededException::forJob(Object(Illuminate\\Queue\\Jobs\\RedisJob))
+#1 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(528): Illuminate\\Queue\\Worker->maxAttemptsExceededException(Object(Illuminate\\Queue\\Jobs\\RedisJob))
+#2 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(431): Illuminate\\Queue\\Worker->markJobAsFailedIfAlreadyExceedsMaxAttempts('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), 1)
+#3 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(392): Illuminate\\Queue\\Worker->process('redis', Object(Illuminate\\Queue\\Jobs\\RedisJob), Object(Illuminate\\Queue\\WorkerOptions))
+#4 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(178): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\RedisJob), 'redis', Object(Illuminate\\Queue\\WorkerOptions))
+#5 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(149): Illuminate\\Queue\\Worker->daemon('redis', 'reenviar-histor...', Object(Illuminate\\Queue\\WorkerOptions))
+#6 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(132): Illuminate\\Queue\\Console\\WorkCommand->runWorker('redis', 'reenviar-histor...')
+#7 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
+#8 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#9 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#10 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#11 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#12 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
+#13 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#15 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\laragon2\\www\\iopgps-webservices\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 C:\\laragon2\\www\\iopgps-webservices\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1231): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 C:\\laragon2\\www\\iopgps-webservices\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#21 {main}
+"} 
+[2025-05-07 20:54:13] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  
+[2025-05-07 20:54:22] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  
+[2025-05-07 20:54:32] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  
+[2025-05-07 20:54:41] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  
+[2025-05-07 20:54:52] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  
+[2025-05-07 20:55:03] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  
+[2025-05-07 20:55:24] local.INFO: Enviando 5 tramas simultáneas a Osinergmin (total: 451)  

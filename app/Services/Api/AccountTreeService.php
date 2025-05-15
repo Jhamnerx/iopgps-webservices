@@ -180,238 +180,267 @@ class AccountTreeService
      * @param int $maxRetries Número máximo de reintentos
      * @param bool $isProduction Si es true, usa configuraciones más agresivas para entornos de producción
      * @return array
-     */
-    public function fetchAndSyncAccounts($accountId = null, int $maxRetries = 3, bool $isProduction = false): array
+     */    public function fetchAndSyncAccounts($accountId = null, int $maxRetries = 3, bool $isProduction = false): array
     {
-        // Usar el modo producción de la instancia si no se especifica
-        $isProduction = $isProduction || $this->isProductionMode;
+        // Verificar si ProcessUnitsJob está en ejecución
+        if (Redis::exists('iopgps_process_units_in_progress')) {
+            $startTime = Redis::get('iopgps_process_units_in_progress');
+            $elapsedTime = time() - $startTime;
 
-        $accessToken = $this->getAccessToken();
+            Log::info("ProcessUnitsJob en ejecución (iniciado hace {$elapsedTime} segundos). Esperando a que termine...");
 
-        if (!$accessToken) {
-            Log::error("No hay accessToken disponible en Redis.");
-            $authTokenService = app(AuthTokenService::class);
-            $token = $authTokenService->getAccessToken();
+            // Esperar hasta 30 segundos para que finalice ProcessUnitsJob
+            $waitCount = 0;
+            while (Redis::exists('iopgps_process_units_in_progress') && $waitCount < 30) {
+                sleep(1);
+                $waitCount++;
+            }
 
-            return ['error' => 'Access token no encontrado.'];
-        }
-
-        $url = $this->baseUrl;
-        if ($accountId) {
-            $url .= "?id={$accountId}";
-        }
-
-        // Verificar si el servidor API está accesible antes de intentar
-        $isReachable = $this->isApiServerReachable();
-
-        // Configuración adaptada según el entorno
-        $timeout = $isProduction ? 180 : 60; // 3 minutos en producción, 1 minuto en local
-        $connectTimeout = $isProduction ? 60 : 30; // 1 minuto en producción, 30 segundos en local
-
-        // En producción, podemos tener más problemas de red
-        $verifySSL = !$isProduction; // En producción podemos desactivar verificación SSL si hay problemas
-
-        // Usamos modo directo si la comprobación de accesibilidad falló
-        $directMode = !$isReachable;
-
-        if (!$isReachable) {
-            Log::warning("Usando modo de conexión directa debido a que el servidor API no responde", [
-                'url' => $url
-            ]);
-        }
-
-        // Crear un cliente HTTP configurado con un timeout más largo
-        $configuredClient = $this->createConfiguredClient(
-            timeout: $timeout,
-            connectTimeout: $connectTimeout,
-            verifySSL: $verifySSL,
-            directMode: $directMode
-        );
-
-        $attempts = 0;
-        $lastError = null;
-        $startTime = microtime(true);
-
-        Log::info("Iniciando solicitud a API de cuentas", [
-            'url' => $url,
-            'entorno' => $isProduction ? 'producción' : 'desarrollo',
-            'timeout' => $timeout,
-            'maxRetries' => $maxRetries,
-            'directMode' => $directMode
-        ]);
-
-        while ($attempts < $maxRetries) {
-            $attempts++;
-            try {
-                Log::info("Intento {$attempts} de conexión a la API", [
-                    'url' => $url,
-                    'tiempoTranscurrido' => round(microtime(true) - $startTime, 2) . ' segundos'
-                ]);
-
-                $response = $configuredClient->request('GET', $url, [
-                    'headers' => [
-                        'accessToken' => $accessToken,
-                        'User-Agent' => 'IOPGPS-WebServices/1.0',
-                        'Accept' => 'application/json'
-                    ],
-                ]);
-
-                $statusCode = $response->getStatusCode();
-                $body = json_decode($response->getBody()->getContents(), true);
-
-                $tiempoTotal = round(microtime(true) - $startTime, 2);
-                Log::info("Respuesta de la API recibida", [
-                    'statusCode' => $statusCode,
-                    'tiempoTotal' => $tiempoTotal . ' segundos',
-                    'tamaño' => isset($body) ? strlen(json_encode($body)) : 0 . ' bytes'
-                ]);
-
-                if ($statusCode !== 200 || empty($body) || !isset($body['code'])) {
-                    Log::error("Respuesta inesperada de la API", ['statusCode' => $statusCode, 'body' => $body]);
-                    return ['error' => 'Respuesta inesperada de la API'];
-                }
-
-                if ($body['code'] !== 0) {
-                    Log::error("Error en respuesta API", ['response' => $body]);
-                    return ['error' => $body['result'] ?? 'Error desconocido'];
-                }
-                return $this->syncAccounts($body);
-            } catch (RequestException | GuzzleException $e) {
-                $lastError = $e;
-                $waitTime = pow(2, $attempts); // Espera exponencial: 2, 4, 8 segundos
-
-                // Obtener detalles específicos del error para mejor diagnóstico
-                $errorDetails = [];
-                if (method_exists($e, 'getHandlerContext')) {
-                    $context = $e->getHandlerContext();
-                    $errorDetails = [
-                        'total_time' => $context['total_time'] ?? 'N/A',
-                        'namelookup_time' => $context['namelookup_time'] ?? 'N/A',
-                        'connect_time' => $context['connect_time'] ?? 'N/A',
-                        'size_upload' => $context['size_upload'] ?? 'N/A',
-                        'size_download' => $context['size_download'] ?? 'N/A',
-                        'speed_download' => $context['speed_download'] ?? 'N/A',
-                        'primary_ip' => $context['primary_ip'] ?? 'N/A',
-                        'primary_port' => $context['primary_port'] ?? 'N/A',
-                        'local_ip' => $context['local_ip'] ?? 'N/A',
-                        'local_port' => $context['local_port'] ?? 'N/A',
-                    ];
-                }
-
-                // Si es un error de timeout o conexión y no estamos en modo directo,
-                // intentamos inmediatamente con modo directo antes de esperar
-                $errorCode = $e->getCode();
-                $isConnectionError =
-                    strpos($e->getMessage(), 'timed out') !== false ||
-                    strpos($e->getMessage(), 'Timeout was reached') !== false ||
-                    strpos($e->getMessage(), 'Failed to connect') !== false;
-
-                if ($isConnectionError && !$directMode && $attempts <= $maxRetries) {
-                    Log::warning("Detectado error de conexión. Reintentando inmediatamente en modo directo", [
-                        'error' => $e->getMessage(),
-                        'intento' => $attempts
-                    ]);
-
-                    // Cambiamos a modo directo y reintentamos inmediatamente
-                    $directMode = true;
-                    $configuredClient = $this->createConfiguredClient(
-                        timeout: $timeout,
-                        connectTimeout: $connectTimeout,
-                        verifySSL: $verifySSL,
-                        directMode: true
-                    );
-
-                    try {
-                        Log::info("Reintento inmediato con modo directo", [
-                            'url' => $url,
-                            'tiempoTranscurrido' => round(microtime(true) - $startTime, 2) . ' segundos'
-                        ]);
-
-                        // Intentar de nuevo en modo directo
-                        $response = $configuredClient->request('GET', $url, [
-                            'headers' => [
-                                'accessToken' => $accessToken,
-                                'User-Agent' => 'IOPGPS-WebServices/1.0',
-                                'Accept' => 'application/json'
-                            ],
-                        ]);
-
-                        $statusCode = $response->getStatusCode();
-                        $body = json_decode($response->getBody()->getContents(), true);
-
-                        $tiempoTotal = round(microtime(true) - $startTime, 2);
-                        Log::info("Respuesta de la API recibida en modo directo", [
-                            'statusCode' => $statusCode,
-                            'tiempoTotal' => $tiempoTotal . ' segundos'
-                        ]);
-
-                        if ($statusCode !== 200 || empty($body) || !isset($body['code'])) {
-                            Log::error("Respuesta inesperada de la API en modo directo", [
-                                'statusCode' => $statusCode,
-                                'body' => $body
-                            ]);
-                            // Continuar con el proceso normal de reintento
-                        } else if ($body['code'] !== 0) {
-                            Log::error("Error en respuesta API en modo directo", ['response' => $body]);
-                            // Continuar con el proceso normal de reintento
-                        } else {
-                            // Si llegamos aquí, tuvimos éxito en modo directo
-                            return $this->syncAccounts($body);
-                        }
-                    } catch (\Exception $innerEx) {
-                        // Si falla el modo directo, continuamos con el ciclo normal de reintentos
-                        Log::warning("El reintento en modo directo también falló", [
-                            'error' => $innerEx->getMessage()
-                        ]);
-                    }
-                }
-
-                Log::warning("Error al conectar con la API (intento {$attempts}/{$maxRetries})", [
-                    'message' => $e->getMessage(),
-                    'esperando' => "{$waitTime} segundos antes del próximo intento",
-                    'tiempoTranscurrido' => round(microtime(true) - $startTime, 2) . ' segundos',
-                    'detalles' => $errorDetails,
-                    'directMode' => $directMode
-                ]);
-
-                if ($attempts < $maxRetries) {
-                    sleep($waitTime);
-                }
-            } catch (\Exception $e) {
-                Log::error("Error inesperado", [
-                    'message' => $e->getMessage(),
-                    'tiempoTranscurrido' => round(microtime(true) - $startTime, 2) . ' segundos',
-                    'trace' => $e->getTraceAsString()
-                ]);
-                return ['error' => 'Error inesperado: ' . $e->getMessage()];
+            if (Redis::exists('iopgps_process_units_in_progress')) {
+                Log::warning("ProcessUnitsJob sigue en ejecución después de esperar 30 segundos. Continuando de todas formas.");
+            } else {
+                Log::info("ProcessUnitsJob completado. Continuando con AccountTreeService.");
             }
         }
 
-        $tiempoTotal = round(microtime(true) - $startTime, 2);
+        // Establecer un lock en Redis para indicar que AccountTreeService está en uso
+        Redis::set('iopgps_account_tree_in_progress', time(), 'EX', 300); // Expira en 5 minutos por seguridad
 
-        // Si llegamos aquí, todos los intentos fallaron
-        Log::error("Todos los intentos de conexión a la API fallaron", [
-            'mensaje' => $lastError ? $lastError->getMessage() : 'Error desconocido',
-            'intentos' => $maxRetries,
-            'tiempoTotal' => $tiempoTotal . ' segundos',
-            'url' => $url
-        ]);
+        try {
+            // Usar el modo producción de la instancia si no se especifica
+            $isProduction = $isProduction || $this->isProductionMode;
 
-        // Sugerencias para resolución
-        $sugerencias = [
-            'Verificar la conectividad de red del servidor',
-            'Comprobar si la API está disponible desde otras ubicaciones',
-            'Considerar el uso de un proxy',
-            'Aumentar aún más los tiempos de timeout',
-            'Verificar la configuración del firewall del servidor'
-        ];
+            $accessToken = $this->getAccessToken();
 
-        return [
-            'error' => 'No se pudo conectar con la API después de ' . $maxRetries . ' intentos. Último error: ' .
-                ($lastError ? $lastError->getMessage() : 'Error desconocido'),
-            'tiempoTotal' => $tiempoTotal,
-            'sugerencias' => $sugerencias
-        ];
+            if (!$accessToken) {
+                Log::error("No hay accessToken disponible en Redis.");
+                $authTokenService = app(AuthTokenService::class);
+                $token = $authTokenService->getAccessToken();
+
+                return ['error' => 'Access token no encontrado.'];
+            }
+
+            $url = $this->baseUrl;
+            if ($accountId) {
+                $url .= "?id={$accountId}";
+            }
+
+            // Verificar si el servidor API está accesible antes de intentar
+            $isReachable = $this->isApiServerReachable();
+
+            // Configuración adaptada según el entorno
+            $timeout = $isProduction ? 180 : 60; // 3 minutos en producción, 1 minuto en local
+            $connectTimeout = $isProduction ? 60 : 30; // 1 minuto en producción, 30 segundos en local
+
+            // En producción, podemos tener más problemas de red
+            $verifySSL = !$isProduction; // En producción podemos desactivar verificación SSL si hay problemas
+
+            // Usamos modo directo si la comprobación de accesibilidad falló
+            $directMode = !$isReachable;
+
+            if (!$isReachable) {
+                Log::warning("Usando modo de conexión directa debido a que el servidor API no responde", [
+                    'url' => $url
+                ]);
+            }
+
+            // Crear un cliente HTTP configurado con un timeout más largo
+            $configuredClient = $this->createConfiguredClient(
+                timeout: $timeout,
+                connectTimeout: $connectTimeout,
+                verifySSL: $verifySSL,
+                directMode: $directMode
+            );
+
+            $attempts = 0;
+            $lastError = null;
+            $startTime = microtime(true);
+
+            Log::info("Iniciando solicitud a API de cuentas", [
+                'url' => $url,
+                'entorno' => $isProduction ? 'producción' : 'desarrollo',
+                'timeout' => $timeout,
+                'maxRetries' => $maxRetries,
+                'directMode' => $directMode
+            ]);
+
+            while ($attempts < $maxRetries) {
+                $attempts++;
+                try {
+                    Log::info("Intento {$attempts} de conexión a la API", [
+                        'url' => $url,
+                        'tiempoTranscurrido' => round(microtime(true) - $startTime, 2) . ' segundos'
+                    ]);
+
+                    $response = $configuredClient->request('GET', $url, [
+                        'headers' => [
+                            'accessToken' => $accessToken,
+                            'User-Agent' => 'IOPGPS-WebServices/1.0',
+                            'Accept' => 'application/json'
+                        ],
+                    ]);
+
+                    $statusCode = $response->getStatusCode();
+                    $body = json_decode($response->getBody()->getContents(), true);
+
+                    $tiempoTotal = round(microtime(true) - $startTime, 2);
+                    Log::info("Respuesta de la API recibida", [
+                        'statusCode' => $statusCode,
+                        'tiempoTotal' => $tiempoTotal . ' segundos',
+                        'tamaño' => isset($body) ? strlen(json_encode($body)) : 0 . ' bytes'
+                    ]);
+
+                    if ($statusCode !== 200 || empty($body) || !isset($body['code'])) {
+                        Log::error("Respuesta inesperada de la API", ['statusCode' => $statusCode, 'body' => $body]);
+                        return ['error' => 'Respuesta inesperada de la API'];
+                    }
+
+                    if ($body['code'] !== 0) {
+                        Log::error("Error en respuesta API", ['response' => $body]);
+                        return ['error' => $body['result'] ?? 'Error desconocido'];
+                    }
+                    return $this->syncAccounts($body);
+                } catch (RequestException | GuzzleException $e) {
+                    $lastError = $e;
+                    $waitTime = pow(2, $attempts); // Espera exponencial: 2, 4, 8 segundos
+
+                    // Obtener detalles específicos del error para mejor diagnóstico
+                    $errorDetails = [];
+                    if (method_exists($e, 'getHandlerContext')) {
+                        $context = $e->getHandlerContext();
+                        $errorDetails = [
+                            'total_time' => $context['total_time'] ?? 'N/A',
+                            'namelookup_time' => $context['namelookup_time'] ?? 'N/A',
+                            'connect_time' => $context['connect_time'] ?? 'N/A',
+                            'size_upload' => $context['size_upload'] ?? 'N/A',
+                            'size_download' => $context['size_download'] ?? 'N/A',
+                            'speed_download' => $context['speed_download'] ?? 'N/A',
+                            'primary_ip' => $context['primary_ip'] ?? 'N/A',
+                            'primary_port' => $context['primary_port'] ?? 'N/A',
+                            'local_ip' => $context['local_ip'] ?? 'N/A',
+                            'local_port' => $context['local_port'] ?? 'N/A',
+                        ];
+                    }
+
+                    // Si es un error de timeout o conexión y no estamos en modo directo,
+                    // intentamos inmediatamente con modo directo antes de esperar
+                    $errorCode = $e->getCode();
+                    $isConnectionError =
+                        strpos($e->getMessage(), 'timed out') !== false ||
+                        strpos($e->getMessage(), 'Timeout was reached') !== false ||
+                        strpos($e->getMessage(), 'Failed to connect') !== false;
+
+                    if ($isConnectionError && !$directMode && $attempts <= $maxRetries) {
+                        Log::warning("Detectado error de conexión. Reintentando inmediatamente en modo directo", [
+                            'error' => $e->getMessage(),
+                            'intento' => $attempts
+                        ]);
+
+                        // Cambiamos a modo directo y reintentamos inmediatamente
+                        $directMode = true;
+                        $configuredClient = $this->createConfiguredClient(
+                            timeout: $timeout,
+                            connectTimeout: $connectTimeout,
+                            verifySSL: $verifySSL,
+                            directMode: true
+                        );
+
+                        try {
+                            Log::info("Reintento inmediato con modo directo", [
+                                'url' => $url,
+                                'tiempoTranscurrido' => round(microtime(true) - $startTime, 2) . ' segundos'
+                            ]);
+
+                            // Intentar de nuevo en modo directo
+                            $response = $configuredClient->request('GET', $url, [
+                                'headers' => [
+                                    'accessToken' => $accessToken,
+                                    'User-Agent' => 'IOPGPS-WebServices/1.0',
+                                    'Accept' => 'application/json'
+                                ],
+                            ]);
+
+                            $statusCode = $response->getStatusCode();
+                            $body = json_decode($response->getBody()->getContents(), true);
+
+                            $tiempoTotal = round(microtime(true) - $startTime, 2);
+                            Log::info("Respuesta de la API recibida en modo directo", [
+                                'statusCode' => $statusCode,
+                                'tiempoTotal' => $tiempoTotal . ' segundos'
+                            ]);
+
+                            if ($statusCode !== 200 || empty($body) || !isset($body['code'])) {
+                                Log::error("Respuesta inesperada de la API en modo directo", [
+                                    'statusCode' => $statusCode,
+                                    'body' => $body
+                                ]);
+                                // Continuar con el proceso normal de reintento
+                            } else if ($body['code'] !== 0) {
+                                Log::error("Error en respuesta API en modo directo", ['response' => $body]);
+                                // Continuar con el proceso normal de reintento
+                            } else {
+                                // Si llegamos aquí, tuvimos éxito en modo directo
+                                return $this->syncAccounts($body);
+                            }
+                        } catch (\Exception $innerEx) {
+                            // Si falla el modo directo, continuamos con el ciclo normal de reintentos
+                            Log::warning("El reintento en modo directo también falló", [
+                                'error' => $innerEx->getMessage()
+                            ]);
+                        }
+                    }
+
+                    Log::warning("Error al conectar con la API (intento {$attempts}/{$maxRetries})", [
+                        'message' => $e->getMessage(),
+                        'esperando' => "{$waitTime} segundos antes del próximo intento",
+                        'tiempoTranscurrido' => round(microtime(true) - $startTime, 2) . ' segundos',
+                        'detalles' => $errorDetails,
+                        'directMode' => $directMode
+                    ]);
+
+                    if ($attempts < $maxRetries) {
+                        sleep($waitTime);
+                    }
+                } catch (\Exception $e) {
+                    Log::error("Error inesperado", [
+                        'message' => $e->getMessage(),
+                        'tiempoTranscurrido' => round(microtime(true) - $startTime, 2) . ' segundos',
+                        'trace' => $e->getTraceAsString()
+                    ]);
+                    return ['error' => 'Error inesperado: ' . $e->getMessage()];
+                }
+            }
+
+            $tiempoTotal = round(microtime(true) - $startTime, 2);
+
+            // Si llegamos aquí, todos los intentos fallaron
+            Log::error("Todos los intentos de conexión a la API fallaron", [
+                'mensaje' => $lastError ? $lastError->getMessage() : 'Error desconocido',
+                'intentos' => $maxRetries,
+                'tiempoTotal' => $tiempoTotal . ' segundos',
+                'url' => $url
+            ]);
+
+            // Sugerencias para resolución
+            $sugerencias = [
+                'Verificar la conectividad de red del servidor',
+                'Comprobar si la API está disponible desde otras ubicaciones',
+                'Considerar el uso de un proxy',
+                'Aumentar aún más los tiempos de timeout',
+                'Verificar la configuración del firewall del servidor'
+            ];
+
+            return [
+                'error' => 'No se pudo conectar con la API después de ' . $maxRetries . ' intentos. Último error: ' .
+                    ($lastError ? $lastError->getMessage() : 'Error desconocido'),
+                'tiempoTotal' => $tiempoTotal,
+                'sugerencias' => $sugerencias
+            ];
+        } finally {
+            // Eliminar el lock de Redis cuando terminemos
+            Redis::del('iopgps_account_tree_in_progress');
+            Log::info("Lock para AccountTreeService liberado");
+        }
     }
     /**
      * Guarda o actualiza las cuentas en la base de datos.

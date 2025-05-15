@@ -137,7 +137,7 @@ class DeviceService
 
             } else {
                 // Crear un nuevo dispositivo con todos los campos
-                Log::info("Creando nuevo dispositivo: " . json_encode($device));
+
                 Devices::create([
                     'id_api' => $device['imei'],
                     'account_id' => $accountId,

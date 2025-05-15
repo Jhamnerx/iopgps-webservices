@@ -25,6 +25,10 @@ Route::middleware([
         Route::get('config', 'config')->name('config');
         Route::get('logs', 'index')->name('index');
     });
+
+    // Logs
+    Route::get('/logs', App\Livewire\Logs\Index::class)->name('logs.index');
+    Route::get('/logs/summary', App\Livewire\Logs\Summary::class)->name('logs.summary');
 });
 
 Route::middleware([

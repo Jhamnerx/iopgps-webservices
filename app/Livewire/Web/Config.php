@@ -102,13 +102,23 @@ class Config extends Component
      */
     public function syncAccounts()
     {
-        $this->accountTreeService->fetchAndSyncAccounts();
-        $this->dispatch(
-            'notify-toast',
-            icon: 'success',
-            title: 'CUENTAS SINCRONIZADAS',
-            mensaje: 'Las cuentas se han sincronizado correctamente'
-        );
+        try {
+            $this->accountTreeService->fetchAndSyncAccounts();
+            $this->dispatch(
+                'notify-toast',
+                icon: 'success',
+                title: 'CUENTAS SINCRONIZADAS',
+                mensaje: 'Las cuentas se han sincronizado correctamente'
+            );
+        } catch (Exception $e) {
+            $this->dispatch(
+                'notify-toast',
+                icon: 'error',
+                title: 'ERROR',
+                mensaje: $e->getMessage()
+            );
+            return;
+        }
     }
 
     public function save()

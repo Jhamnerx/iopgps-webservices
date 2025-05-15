@@ -3,11 +3,23 @@
         <div class="w-full md:w-11/12">
             <div class="bg-white shadow-md rounded-lg dark:bg-gray-800">
                 <!-- Header -->
-                <div class="flex items-center bg-gray-100 px-6 py-4 rounded-t-lg dark:bg-gray-700">
-                    <div class="text-blue-500 text-3xl mr-4">
-                        <i class="fas fa-tachometer-alt"></i>
+                <div class="flex items-center justify-between bg-gray-100 px-6 py-4 rounded-t-lg dark:bg-gray-700">
+                    <div class="flex items-center">
+                        <div class="text-blue-500 text-3xl mr-4">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Dashboard</h3>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Dashboard</h3>
+                    <div class="flex space-x-2">
+                        <a href="{{ route('logs.index') }}"
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                            Ver Logs
+                        </a>
+                        <a href="{{ route('logs.summary') }}"
+                            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                            Resumen de Logs
+                        </a>
+                    </div>
                 </div>
                 <!-- Body -->
                 <div class="p-6">

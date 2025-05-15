@@ -19,6 +19,7 @@ class InfoLog extends Component
     #[On('open-modal-log')]
     public function openModal(Logs $log)
     {
+        dd($log);
         $this->showModal = true;
         $this->log = $log;
     }

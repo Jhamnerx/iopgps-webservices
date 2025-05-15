@@ -147,18 +147,21 @@ class OsinergminSender implements UnitSenderInterface
 
     protected function handleSuccess(array $response, array $trama): void
     {
-        if ($this->config->servicios['osinergmin']['enabled_logs']) {
-            $this->logService->logToDatabase(
-                '',
-                'Osinergmin',
-                $trama['plate'],
-                'success',
-                $trama,
-                ['message' => $response],
-                [],
-                Carbon::parse($trama['gpsDate'])->setTimezone('America/Lima')->format('Y-m-d H:i:s'),
-                $trama['imei']
-            );
+        if ($this->config->servicios['osinergmin']['enabled_logs'] ?? true) {
+            // Solo logueamos si está habilitado y no está activo log_only_errors
+            if (!($this->config->servicios['osinergmin']['log_only_errors'] ?? false)) {
+                $this->logService->logToDatabase(
+                    '',
+                    'Osinergmin',
+                    $trama['plate'],
+                    'success',
+                    $trama,
+                    ['message' => $response],
+                    [],
+                    Carbon::parse($trama['gpsDate'])->setTimezone('America/Lima')->format('Y-m-d H:i:s'),
+                    $trama['imei']
+                );
+            }
         }
 
         try {

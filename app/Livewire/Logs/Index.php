@@ -5,6 +5,7 @@ namespace App\Livewire\Logs;
 use App\Exports\LogsExport;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Route;
 
 class Index extends Component
 {
@@ -15,7 +16,8 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.logs.index');
+        return view('livewire.logs.index')
+            ->layout('layouts.livewire');
     }
 
     public function export()

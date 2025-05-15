@@ -57,7 +57,6 @@ class Processor implements UnitProcessorInterface
 
                     // Procesar para Osinergmin
                     if ($device->services['osinergmin']['active'] ?? false) {
-                        Log::info('Procesando unidad: ' . $unit['imei'] . " - Diferencia de tiempo: " . $deviceLastUpdate->diffInMinutes($deviceTime) . " minutos");
 
                         if ($deviceLastUpdate->diffInMinutes($deviceTime) > 3) {
                             ReenviarHistorial::dispatch($unit['imei'], $deviceLastUpdate->format('Y-m-d H:i:s'), $deviceTime->format('Y-m-d H:i:s'));

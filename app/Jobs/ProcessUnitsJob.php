@@ -46,6 +46,19 @@ class ProcessUnitsJob implements ShouldQueue
             return;
         }
 
+        // Verificar si DeviceService está en uso
+        if (Redis::exists('iopgps_device_service_in_progress')) {
+            // Obtener el timestamp del inicio de operación 
+            $startTime = Redis::get('iopgps_device_service_in_progress');
+            $elapsedTime = time() - $startTime;
+
+            Log::info("DeviceService en uso (operación iniciada hace {$elapsedTime} segundos). Posponiendo ProcessUnitsJob.");
+
+            // Posponer este job para que se ejecute en 60 segundos
+            $this->release(60);
+            return;
+        }
+
         // Establecer nuestro propio lock
         Redis::set('iopgps_process_units_in_progress', time(), 'EX', 300); // Expira en 5 minutos por seguridad
 

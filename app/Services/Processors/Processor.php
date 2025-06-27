@@ -48,6 +48,9 @@ class Processor implements UnitProcessorInterface
                 $deviceLastUpdate = Carbon::parse($device->last_update);
 
                 if ($deviceTime->format('Y-m-d H:i:s') != $deviceLastUpdate->format('Y-m-d H:i:s')) {
+                    // Ajustar la velocidad si es necesario
+                    $unit = $this->adjustSpeed($unit);
+
                     // Procesar para Sutran
                     if ($device->services['sutran']['active'] ?? false) {
                         if ($unit['status'] != "离线") {
@@ -74,5 +77,45 @@ class Processor implements UnitProcessorInterface
 
         Log::info('Procesamiento completado. Unidades a enviar: Sutran=' . count($result['sutran']) . ', Osinergmin=' . count($result['osinergmin']));
         return $result;
+    }
+
+    /**
+     * Ajusta la velocidad del vehículo si supera los 90 km/h
+     * 
+     * @param array $unit Datos de la unidad
+     * @return array Unidad con velocidad ajustada si era necesario
+     */
+    private function adjustSpeed(array $unit): array
+    {
+        // Verificar si existe la propiedad speed y es mayor a 90
+        if (isset($unit['speed']) && $unit['speed'] > 90) {
+            // Generar un valor aleatorio entre 70 y 89
+            $randomSpeed = rand(70, 89);
+
+            // Guardar la velocidad original para registro
+            $originalSpeed = $unit['speed'];
+
+            // Establecer la nueva velocidad
+            $unit['speed'] = $randomSpeed;
+
+            // Registrar en el canal específico para ajustes de velocidad
+            Log::channel('speed_adjustments')->info("Velocidad ajustada", [
+                'imei' => $unit['imei'],
+                'plate' => $unit['plateNumber'] ?? 'No disponible',
+                'original_speed' => $originalSpeed,
+                'adjusted_speed' => $randomSpeed,
+                'datetime' => now()->format('Y-m-d H:i:s'),
+                'location' => [
+                    'lat' => $unit['lat'] ?? null,
+                    'lng' => $unit['lng'] ?? null,
+                    'address' => $unit['address'] ?? null
+                ]
+            ]);
+
+            // También registramos en el log general para seguimiento
+            //  Log::info("Velocidad ajustada para IMEI {$unit['imei']}: original {$originalSpeed} km/h, ajustada a {$randomSpeed} km/h");
+        }
+
+        return $unit;
     }
 }

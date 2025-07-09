@@ -241,7 +241,7 @@ class Config extends Component
     {
 
         if ($name == 'osinergmin.status' && $value == false) {
-            $this->servicios['osinergmin']['token'] = '';
+            $this->servicios->put('osinergmin', array_merge($this->servicios['osinergmin'], ['token' => '']));
         }
 
         if ($name == 'sutran.status' && $value == false) {

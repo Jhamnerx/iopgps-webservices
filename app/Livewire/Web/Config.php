@@ -169,6 +169,19 @@ class Config extends Component
             return;
         }
 
+        // Verificar si el servicio está activo en la configuración global antes de activarlo para un dispositivo
+        if ($status == true && (!isset($this->config->servicios[$service]) ||
+            (isset($this->config->servicios[$service]['status']) && $this->config->servicios[$service]['status'] == false))) {
+            $this->dispatch(
+                'notify-toast',
+                icon: 'error',
+                title: 'ERROR',
+                mensaje: 'El servicio ' . strtoupper($service) . ' no está activo en la configuración global. Actívelo primero.'
+            );
+            $this->render();
+            return;
+        }
+
         $services = collect($unit->services);
         $services->put($service, ['active' => $status]);
         $unit->update([

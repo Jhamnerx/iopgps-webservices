@@ -107,7 +107,7 @@ class LogService
         try {
             $now = Carbon::now();
             $date = $now->toDateString();
-            $hour = $now->format('H');
+            $hour = $now->format('H:i'); // Modificado para incluir hora y minuto (HH:MM)
 
             // Buscar o crear registro de resumen
             $summary = LogSummary::firstOrNew([

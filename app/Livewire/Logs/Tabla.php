@@ -127,8 +127,15 @@ final class Tabla extends PowerGridComponent
         ];
     }
 
-    public function openModalInfo(Logs $log): void
+    public function openModalInfo(Logs $id): void
     {
+        $log = Logs::find($id);
+
+        if (!$log) {
+            $this->dispatch('pg:eventRefresh-TablaLogs');
+            return;
+        }
+
         $this->dispatch('open-modal-log', log: $log);
     }
 }

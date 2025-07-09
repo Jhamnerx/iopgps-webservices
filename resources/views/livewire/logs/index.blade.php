@@ -31,3 +31,6 @@
     <livewire:logs.tabla />
 
 </div>
+@push('modals')
+    @livewire('logs.info-log')
+@endpush

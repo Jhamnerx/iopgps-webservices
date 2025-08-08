@@ -103,15 +103,14 @@ class Processor implements UnitProcessorInterface
                     // Registrar validación técnica en el canal de calidad de datos
                     Log::channel('data_quality')->info("Validación técnica aplicada", [
                         'imei' => $unit['imei'],
-                        'plate' => $unit['plateNumber'] ?? 'No disponible',
+                        'plate' => $unit['licenseNumber'] ?? 'No disponible',
                         'raw_speed' => $originalSpeed,
                         'validated_speed' => $normalizedSpeed,
                         'validation_type' => 'technical_specs',
                         'datetime' => now()->format('Y-m-d H:i:s'),
                         'location' => [
-                            'lat' => $unit['lat'] ?? null,
-                            'lng' => $unit['lng'] ?? null,
-                            'address' => $unit['address'] ?? null
+                            'lat' => $unit['location']['lat'] ?? null,
+                            'lng' => $unit['location']['lng'] ?? null,
                         ]
                     ]);
                 }
@@ -143,9 +142,12 @@ class Processor implements UnitProcessorInterface
         // Si excede límites operacionales, aplicar normalización gradual
         if ($normalizedSpeed > $roadSpeedLimit) {
             // Reducción gradual para evitar cambios bruscos
-            $reductionRate = min(0.15, ($normalizedSpeed - $roadSpeedLimit) / $normalizedSpeed);
+            $reductionRate = min(0.12, ($normalizedSpeed - $roadSpeedLimit) / $normalizedSpeed);
             $normalizedSpeed = $normalizedSpeed * (1 - $reductionRate);
         }
+
+        // Asegurar que no exceda el límite máximo permitido de 92 km/h
+        $normalizedSpeed = min($normalizedSpeed, 92);
 
         // Redondear a valor entero para consistencia
         return round($normalizedSpeed);
@@ -166,8 +168,8 @@ class Processor implements UnitProcessorInterface
         $adjustments = 0;
 
         // Ajuste por precisión GPS (simulado basado en ubicación)
-        if (isset($unit['lat'], $unit['lng'])) {
-            $gpsVariation = sin($unit['lat'] * 0.01) * 0.02;
+        if (isset($unit['location']['lat'], $unit['location']['lng'])) {
+            $gpsVariation = sin($unit['location']['lat'] * 0.01) * 0.02;
             $adjustments += $gpsVariation;
         }
 
@@ -187,21 +189,11 @@ class Processor implements UnitProcessorInterface
     private function getRoadSpeedLimit(array $unit): int
     {
         // Límites operacionales estándar por tipo de vía
-        $defaultLimit = 89; // Límite estándar para carreteras
+        // Como no tenemos datos de address, usamos un límite estándar más conservador
+        $defaultLimit = 90; // Límite estándar para carreteras
 
-        // Analizar contexto de ubicación si está disponible
-        if (isset($unit['address'])) {
-            $address = strtolower($unit['address']);
-
-            // Detectar tipo de vía por palabras clave
-            if (strpos($address, 'autopista') !== false || strpos($address, 'panamericana') !== false) {
-                return 89; // Autopistas
-            } elseif (strpos($address, 'ciudad') !== false || strpos($address, 'urbano') !== false) {
-                return 79; // Vías urbanas
-            } elseif (strpos($address, 'carretera') !== false) {
-                return 84; // Carreteras rurales
-            }
-        }
+        // Podrías agregar aquí lógica adicional basada en otros datos disponibles
+        // como ubicación GPS si tienes una base de datos de zonas urbanas/rurales
 
         return $defaultLimit;
     }

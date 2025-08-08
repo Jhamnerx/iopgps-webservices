@@ -135,6 +135,14 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'data_quality' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/data_quality.log'),
+            'level' => 'info',
+            'days' => 90,
+            'replace_placeholders' => true,
+        ],
+
     ],
 
 ];

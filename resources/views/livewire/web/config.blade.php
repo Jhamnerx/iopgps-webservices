@@ -173,7 +173,9 @@
                                                     </div>
                                                 </th>
                                             @endforeach
-
+                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap min-w-44">
+                                                <div class="font-semibold text-left">OPCIONES</div>
+                                            </th>
                                         </tr>
                                     </thead>
 
@@ -241,6 +243,15 @@
                                                         </div>
                                                     </td>
                                                 @endforeach
+                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                    <div class="flex items-center">
+
+                                                        <x-form.dropdown>
+                                                            <x-dropdown.item icon="eye" label="Ver Info"
+                                                                wire:click.prevent="VerInfo({{ $unit->id }})" />
+                                                        </x-form.dropdown>
+                                                    </div>
+                                                </td>
 
                                             </tr>
                                         @endforeach
@@ -377,4 +388,8 @@
             console.log('Tecla F2 presionada. Acción ejecutada.');
         }
     </script>
+@endpush
+
+@push('modals')
+    @livewire('devices.info-device')
 @endpush

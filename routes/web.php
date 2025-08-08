@@ -7,10 +7,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AjustesController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\DeviceController;
 
 Route::middleware([
     'web',
 ])->group(function () {
+
+    // RUTAS DE DISPOSITIVOS
+    Route::middleware('auth')->controller(DeviceController::class)->prefix('dispositivos')->name('dispositivos.')->group(function () {
+        Route::get('actualizar/{imei}', 'updateDeviceDetails')->name('actualizar');
+        Route::get('actualizar-todos', 'updateAllDevices')->name('actualizar-todos');
+    });
 
     //RUTAS DE DASHBOARD
     Route::middleware('auth')->controller(DashboardController::class)->group(function () {

@@ -268,4 +268,10 @@ class Config extends Component
 
         $this->dispatch('openModalReenvio');
     }
+
+    public function VerInfo(Devices $device)
+    {
+
+        $this->dispatch('openModalVerInfo', device: $device);
+    }
 }

@@ -12,13 +12,20 @@ class Devices extends Model
 
     protected $casts = [
         'services' => 'json',
-        'last_position' => 'json'
+        'last_position' => 'json',
+        'last_update' => 'datetime',
+        'details_last_updated' => 'datetime',
     ];
 
 
     public function scopeActive($query)
     {
         return $query->where('active', true);
+    }
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class, 'account_id', 'accountId');
     }
 
     /**

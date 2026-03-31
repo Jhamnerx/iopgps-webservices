@@ -15,6 +15,7 @@ class Processor implements UnitProcessorInterface
         $result = [
             'sutran' => [],
             'osinergmin' => [],
+            'sidersales' => [],
             // Otros servicios
         ];
 
@@ -69,13 +70,21 @@ class Processor implements UnitProcessorInterface
                             $result['osinergmin'][] = $unit;
                         }
                     }
+
+                    // Procesar para Sidersales
+                    if ($device->services['sidersales']['active'] ?? false) {
+                        if ($unit['status'] != "离线") {
+                            $result['sidersales'][] = $unit;
+                        }
+                    }
                 }
             } else {
                 Log::warning('Dispositivo no encontrado en la base de datos: ' . $unit['imei']);
             }
         }
 
-        Log::info('Procesamiento completado. Unidades a enviar: Sutran=' . count($result['sutran']) . ', Osinergmin=' . count($result['osinergmin']));
+        Log::info('Procesamiento completado. Unidades a enviar: Sutran=' . count($result['sutran']) . ', Osinergmin=' . count($result['osinergmin']) . ', Sidersales=' . count($result['sidersales']));
+
         return $result;
     }
 

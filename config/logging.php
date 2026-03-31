@@ -143,6 +143,14 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'sidersales' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/sidersales.log'),
+            'level' => 'info',
+            'days' => 90,
+            'replace_placeholders' => true,
+        ],
+
     ],
 
 ];

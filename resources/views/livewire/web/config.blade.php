@@ -32,8 +32,6 @@
                     <div
                         class="col-span-12 md:col-span-9 grid grid-cols-12 gap-2 bg-white dark:bg-gray-800 items-start border rounded-md m-3 p-4">
 
-
-
                         <div
                             class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2 col-span-full pl-9">
 
@@ -212,14 +210,13 @@
                                                         @livewire('web.input-plate', ['unit' => $unit], key('input-' . $unit->id))
                                                     </div>
                                                 </td>
-                                                @foreach ($unit->services as $service => $status)
+                                                @foreach ($servicios->keys()->all() as $service)
+                                                    @php $status = $unit->services[$service] ?? ['active' => false]; @endphp
                                                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                         <div class="text-center">
-                                                            <div class="m-3 w-48">
-
-
-                                                                <div class="flex items-center mt-2"
-                                                                    x-data="{ checked: {{ $status['active'] ? 'true' : 'false' }} }">
+                                                            <div class="m-3">
+                                                                <div class="flex items-center justify-center mt-2"
+                                                                    x-data="{ checked: {{ $status['active'] ?? false ? 'true' : 'false' }} }">
 
                                                                     <div class="form-switch">
                                                                         <input
@@ -235,10 +232,30 @@
                                                                             <span class="sr-only">Estado</span>
                                                                         </label>
                                                                     </div>
-
                                                                 </div>
 
-
+                                                                @if ($service === 'sidersales')
+                                                                    <div class="mt-2 flex items-center gap-1 justify-center"
+                                                                        x-data="{ ruc: '{{ $status['ruc_transportista'] ?? '' }}' }">
+                                                                        <input type="text" x-model="ruc"
+                                                                            placeholder="RUC"
+                                                                            class="text-xs border rounded px-2 py-1 w-24 dark:bg-gray-700 dark:text-white dark:border-gray-600" />
+                                                                        <button
+                                                                            x-on:click="$wire.saveDeviceRucSidersales({{ $unit->id }}, ruc)"
+                                                                            title="Guardar RUC"
+                                                                            class="text-blue-500 hover:text-blue-700 transition-colors">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                class="h-4 w-4" fill="none"
+                                                                                viewBox="0 0 24 24"
+                                                                                stroke="currentColor">
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="M5 13l4 4L19 7" />
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </td>
@@ -354,7 +371,73 @@
                         </div>
                     </div>
 
-                </div>
+                    {{-- SIDERSALES --}}
+                    <div
+                        class="col-span-12 md:col-span-3 grid grid-cols-12 gap-4 bg-white dark:bg-gray-800 items-start border rounded-md m-3 p-4">
+
+                        <div class="col-span-12 text-center">
+                            <img src="/assets/logos/SiderPeru.png" alt="Sider Perú"
+                                class="h-16 mx-auto mb-2 object-contain" />
+                            <p class="text-lg font-bold text-gray-700 dark:text-gray-200 tracking-wide">SIDERSALES PE
+                            </p>
+                            <p class="text-xs text-gray-400">Gerdau — MuleSoft GPS Tracking</p>
+                        </div>
+
+                        <div class="col-span-6 text-center">
+                            <x-form.checkbox left-label="Activo" value="true" lg
+                                wire:model.live="servicios.sidersales.status" />
+                        </div>
+
+                        <div class="col-span-6 text-center">
+                            <x-form.checkbox left-label="Logs Activos" value="true" lg
+                                wire:model.live="servicios.sidersales.enabled_logs" />
+                        </div>
+
+                        @if ($servicios['sidersales']['status'] ?? false)
+                            {{-- Entorno --}}
+                            <div class="col-span-12">
+                                <label
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Entorno</label>
+                                <select wire:model.live="servicios.sidersales.environment"
+                                    class="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 text-sm bg-white dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500">
+                                    <option value="dev">DEV — development</option>
+                                    <option value="qa">QA — quality assurance</option>
+                                    <option value="prd">PRD — producción</option>
+                                </select>
+                                <p class="text-xs text-gray-400 mt-1">
+                                    @if (($servicios['sidersales']['environment'] ?? 'dev') === 'dev')
+                                        🔵 dev-experience-gerdau-sidersales-pe.us-e1.cloudhub.io
+                                    @elseif(($servicios['sidersales']['environment'] ?? 'dev') === 'qa')
+                                        🟡 qa-experience-gerdau-sidersales-pe.us-e1.cloudhub.io
+                                    @else
+                                        🟢 api.gerdau.com/experiencepe/api/gps-tracking
+                                    @endif
+                                </p>
+                            </div>
+
+                            {{-- Client ID --}}
+                            <div class="col-span-12">
+                                <x-form.input wire:model.live="servicios.sidersales.client_id"
+                                    label="Client ID (Azure AD):"
+                                    description="Proporcionado por Gerdau / Sidersales" />
+                            </div>
+
+                            {{-- Client Secret --}}
+                            <div class="col-span-12">
+                                <x-form.input wire:model.live="servicios.sidersales.client_secret" type="password"
+                                    label="Client Secret (Azure AD):"
+                                    description="Rota periódicamente — solicitar renovación en ServiceNow" />
+                            </div>
+
+                        @endif
+
+                        <div class="col-span-12 text-center flex justify-end">
+                            <x-form.button wire:click="saveServicioSidersales" spinner="saveServicioSidersales"
+                                Positive rounded="md" label="Guardar" />
+                        </div>
+                    </div>
+
+                </div>{{-- fin columna derecha --}}
             </div>
         </div>
 

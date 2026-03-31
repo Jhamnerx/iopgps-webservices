@@ -11,7 +11,6 @@ use Livewire\WithPagination;
 use Illuminate\Support\Collection;
 use App\Models\Config as ConfigApp;
 use App\Services\Api\DeviceService;
-use Illuminate\Support\Facades\Redis;
 use App\Services\Api\AccountTreeService;
 
 
@@ -43,7 +42,29 @@ class Config extends Component
 
         $this->hash = $config->hash;
         $this->status = $config->status;
-        $this->servicios = collect($config->servicios);
+
+        // Fusionar valores por defecto para servicios nuevos que aún no existan en la BD
+        $servicios = array_merge([
+            'sutran' => [
+                'token'        => '',
+                'status'       => 0,
+                'enabled_logs' => 0,
+            ],
+            'osinergmin' => [
+                'token'        => '',
+                'status'       => 0,
+                'enabled_logs' => 0,
+            ],
+            'sidersales' => [
+                'status'        => 0,
+                'enabled_logs'  => 0,
+                'environment'   => 'dev',
+                'client_id'     => '',
+                'client_secret' => '',
+            ],
+        ], $config->servicios ?? []);
+
+        $this->servicios = collect($servicios);
         $this->config = $config;
     }
 
@@ -260,8 +281,66 @@ class Config extends Component
         if ($name == 'sutran.status' && $value == false) {
             $this->servicios->put('sutran', array_merge($this->servicios['sutran'], ['token' => '']));
         }
+
+        if ($name == 'sidersales.status' && $value == false) {
+            $this->servicios->put('sidersales', array_merge($this->servicios['sidersales'], [
+                'client_id'     => '',
+                'client_secret' => '',
+            ]));
+        }
     }
 
+    public function saveServicioSidersales()
+    {
+        $this->validate(
+            [
+                'servicios.sidersales.client_id'    => 'required_if:servicios.sidersales.status,true|string',
+                'servicios.sidersales.client_secret' => 'required_if:servicios.sidersales.status,true|string',
+                'servicios.sidersales.environment'  => 'required|in:dev,qa,prd',
+            ],
+            [
+                'servicios.sidersales.client_id.required_if'    => 'El Client ID es requerido cuando el servicio está activo',
+                'servicios.sidersales.client_secret.required_if' => 'El Client Secret es requerido cuando el servicio está activo',
+                'servicios.sidersales.environment.in'            => 'El entorno debe ser dev, qa o prd',
+            ]
+        );
+
+        $nuevosServicios = array_merge(
+            $this->config->servicios,
+            ['sidersales' => $this->servicios['sidersales']]
+        );
+
+        $this->config->update([
+            'servicios' => $nuevosServicios,
+        ]);
+
+        // Limpiar el token cacheado para forzar renovación con las nuevas credenciales
+        \Illuminate\Support\Facades\Cache::forget(\App\Services\Api\SidersalesTokenService::CACHE_KEY);
+
+        $this->dispatch(
+            'notify-toast',
+            icon: 'success',
+            title: 'SERVICIO ACTUALIZADO',
+            mensaje: 'El servicio de SIDERSALES se ha actualizado correctamente'
+        );
+    }
+
+
+    public function saveDeviceRucSidersales(Devices $unit, string $ruc): void
+    {
+        $services = collect($unit->services ?? []);
+        $sidersales = $services->get('sidersales', ['active' => false]);
+        $sidersales['ruc_transportista'] = trim($ruc);
+        $services->put('sidersales', $sidersales);
+        $unit->update(['services' => $services->toArray()]);
+
+        $this->dispatch(
+            'notify-toast',
+            icon: 'success',
+            title: 'RUC ACTUALIZADO',
+            mensaje: 'RUC del transportista actualizado para ' . ($unit->plate ?? $unit->name)
+        );
+    }
 
     public function openModalReevio()
     {

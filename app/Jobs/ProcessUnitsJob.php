@@ -7,6 +7,7 @@ use App\Models\Config;
 use App\Models\Devices;
 use App\Jobs\SendToSutranJob;
 use App\Jobs\SendToOsinergminJob;
+use App\Jobs\SendToSidersalesJob;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
 use App\Services\Processors\Processor;
@@ -98,8 +99,9 @@ class ProcessUnitsJob implements ShouldQueue
 
             $sutranDevices = $this->filterSutranDevices($devices);
             $osinergminDevices = $this->filterOsinergminDevices($devices);
+            $sidersalesDevices = $this->filterSidersalesDevices($devices);
 
-            $combinedDevices = array_unique(array_merge($sutranDevices, $osinergminDevices));
+            $combinedDevices = array_unique(array_merge($sutranDevices, $osinergminDevices, $sidersalesDevices));
 
             $chunks = array_chunk($combinedDevices, 10);
 
@@ -142,6 +144,11 @@ class ProcessUnitsJob implements ShouldQueue
             if (!empty($processedUnits['osinergmin'])) {
                 SendToOsinergminJob::dispatch($processedUnits['osinergmin']);
                 Log::info('Enviados ' . count($processedUnits['osinergmin']) . ' dispositivos a Osinergmin');
+            }
+
+            if (!empty($processedUnits['sidersales'])) {
+                SendToSidersalesJob::dispatch($processedUnits['sidersales']);
+                Log::info('Enviados ' . count($processedUnits['sidersales']) . ' dispositivos a Sidersales');
             }
         } catch (\Illuminate\Database\QueryException $e) {
             // Capturar específicamente errores de deadlock
@@ -195,6 +202,13 @@ class ProcessUnitsJob implements ShouldQueue
     {
         return $devices->filter(function ($unit) {
             return $unit->services['osinergmin']['active'] ?? false;
+        })->pluck('imei')->toArray();
+    }
+
+    private function filterSidersalesDevices($devices)
+    {
+        return $devices->filter(function ($unit) {
+            return $unit->services['sidersales']['active'] ?? false;
         })->pluck('imei')->toArray();
     }
 }

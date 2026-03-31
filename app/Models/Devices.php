@@ -37,7 +37,8 @@ class Devices extends Model
     {
         return self::where(function ($query) {
             $query->whereJsonContains('services->sutran->active', true)
-                ->orWhereJsonContains('services->osinergmin->active', true);
+                ->orWhereJsonContains('services->osinergmin->active', true)
+                ->orWhereJsonContains('services->sidersales->active', true);
         })->exists();
     }
 }

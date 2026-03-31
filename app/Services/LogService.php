@@ -206,7 +206,7 @@ class LogService
     protected function optimizeJson($data): string
     {
         if (empty($data)) {
-            return null;
+            return '';
         }
 
         // Intentamos optimizar el array antes de convertirlo a JSON

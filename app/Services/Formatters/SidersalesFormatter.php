@@ -15,7 +15,7 @@ class SidersalesFormatter implements UnitFormatterInterface
     // URLs por entorno — declaradas como constantes
     const URL_DEV = 'https://dev-experience-gerdau-sidersales-pe.us-e1.cloudhub.io/api/gps-tracking';
     const URL_QA  = 'https://qa-experience-gerdau-sidersales-pe.us-e1.cloudhub.io/api/gps-tracking';
-    const URL_PRD = 'https://api.gerdau.com/experiencepe/api/gps-tracking';
+    const URL_PRD = 'https://api.gerdau.com/experience-gerdau-sidersales-pe/api/gps-tracking';
 
     const PROVEEDOR_GPS = 'VINITRACKER';
 

@@ -22,3 +22,7 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
+/storage/*.key
+/storage/logs/*
+/storage/framework/*
+/storage/debugbar/*

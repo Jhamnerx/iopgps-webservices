@@ -51,7 +51,11 @@ class SidersalesTokenService
             throw new \RuntimeException('Las credenciales de Sidersales (client_id / client_secret) no están configuradas.');
         }
 
-        $client = new Client(['verify' => false]);
+        $client = new Client([
+            'verify' => false,
+            'connect_timeout' => 5,
+            'timeout' => 10,
+        ]);
 
         try {
             $response = $client->post(self::TOKEN_URL, [

@@ -28,7 +28,8 @@ class DeviceService
      */
     private function getAccessToken(): ?string
     {
-        return Redis::get('iopgps_access_token');
+        // Siempre a través de AuthTokenService: renueva si expiró y devuelve null si no hay token válido
+        return app(AuthTokenService::class)->getAccessToken();
     }
     /**
      * Obtiene dispositivos para todas las cuentas almacenadas.

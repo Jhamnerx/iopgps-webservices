@@ -23,7 +23,8 @@ class DeviceHistoryService
 
     private function getAccessToken(): ?string
     {
-        return Redis::get('iopgps_access_token');
+        // Siempre a través de AuthTokenService: renueva si expiró y devuelve null si no hay token válido
+        return app(AuthTokenService::class)->getAccessToken();
     }
 
 
@@ -73,6 +74,11 @@ class DeviceHistoryService
             }
 
             if ($body['code'] !== 0) {
+                if (AuthTokenService::isTokenError($statusCode, $body)) {
+                    // Se borra para que la siguiente petición pida un token nuevo
+                    app(AuthTokenService::class)->invalidate();
+                }
+
                 Log::error("Error en respuesta API", ['response' => $body]);
                 return ['error' => $body['result'] ?? 'Error desconocido'];
             }

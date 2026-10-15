@@ -20,51 +20,71 @@ class DeviceStatusService
     }
 
     /**
-     * Obtiene el accessToken desde Redis.
-     */
-    private function getAccessToken(): ?string
-    {
-        return Redis::get('iopgps_access_token');
-    }
-
-    /**
      * Consulta el estado de múltiples dispositivos por IMEI.
+     * Si no hay token válido no se hace la petición y se devuelve 'token_error' => true.
      */
     public function fetchDeviceStatus(array $imeis): array
     {
-        $accessToken = $this->getAccessToken();
-
-        if (!$accessToken) {
-            Log::error("No hay accessToken disponible en Redis.");
-            $authTokenService = app(AuthTokenService::class);
-            $token = $authTokenService->getAccessToken();
-
-            return ['error' => 'Access token no encontrado.'];
-        }
-
-
         if (empty($imeis)) {
             return ['error' => 'Debe proporcionar al menos un IMEI.'];
         }
 
+        $authTokenService = app(AuthTokenService::class);
+        $accessToken = $authTokenService->getAccessToken();
+
+        if (!$accessToken) {
+            Log::error('No hay accessToken válido de IOPGPS; no se consulta el estado de dispositivos.');
+            return ['error' => 'Access token no disponible.', 'token_error' => true];
+        }
+
+        $result = $this->requestStatus($imeis, $accessToken);
+
+        // Token rechazado por la API: renovar una sola vez y reintentar
+        if (!empty($result['token_error'])) {
+            Log::warning('IOPGPS rechazó el accessToken; renovando.');
+            $authTokenService->invalidate();
+            $accessToken = $authTokenService->refreshToken();
+
+            if (!$accessToken) {
+                return ['error' => 'No se pudo renovar el access token.', 'token_error' => true];
+            }
+
+            $result = $this->requestStatus($imeis, $accessToken);
+        }
+
+        return $result;
+    }
+
+    private function requestStatus(array $imeis, string $accessToken): array
+    {
         try {
             $imeiString = implode(',', $imeis);
             $url = "{$this->baseUrl}?accessToken={$accessToken}&imei={$imeiString}";
 
             $response = $this->client->request('GET', $url, [
+                'connect_timeout' => 5,
                 'timeout' => 10,
+                'http_errors' => false,
             ]);
 
             $statusCode = $response->getStatusCode();
             $body = json_decode($response->getBody()->getContents(), true);
+
+            if (AuthTokenService::isTokenError($statusCode, $body)) {
+                Log::error('Token IOPGPS inválido', ['statusCode' => $statusCode, 'body' => $body]);
+                return ['error' => 'Token inválido', 'token_error' => true];
+            }
 
             if ($statusCode !== 200 || empty($body) || !isset($body['code'])) {
                 Log::error("Respuesta inesperada de la API", ['statusCode' => $statusCode, 'body' => $body]);
                 return ['error' => 'Respuesta inesperada de la API'];
             }
 
-            // Log completo de la respuesta para depuración
-            Log::info('Partial result: ', $body);
+            // Antes se logueaba la respuesta completa cada 30s y llenaba el disco
+            Log::debug('Partial result', [
+                'code' => $body['code'],
+                'devices' => is_array($body['data'] ?? null) ? count($body['data']) : 0,
+            ]);
 
             if ($body['code'] !== 0) {
                 Log::error("Error en respuesta API", ['response' => $body]);

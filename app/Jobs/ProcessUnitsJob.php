@@ -9,50 +9,58 @@ use App\Jobs\SendToSutranJob;
 use App\Jobs\SendToOsinergminJob;
 use App\Jobs\SendToSidersalesJob;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 use App\Services\Processors\Processor;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
+use App\Services\Api\AuthTokenService;
 use App\Services\Api\DeviceStatusService;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 
 
-class ProcessUnitsJob implements ShouldQueue
+/**
+ * Se despacha cada 30 segundos. ShouldBeUnique evita que se encolen nuevas
+ * instancias mientras una sigue pendiente o en ejecución (antes se acumulaban
+ * y se ejecutaban en paralelo, duplicando envíos).
+ */
+class ProcessUnitsJob implements ShouldQueue, ShouldBeUnique
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $config;
     protected DeviceStatusService $deviceStatusService;
-    public $timeout = 1200; // 5 minutos
 
     /**
-     * Número máximo de reintentos para este job
+     * Debe ser MENOR que retry_after de la conexión (config/queue.php, 300s).
+     * Si es mayor, otro worker vuelve a tomar el job mientras sigue corriendo.
      */
-    public $tries = 5;
+    public $timeout = 240;
 
     /**
-     * Tiempo en segundos para reintentar tras fallo
-     * Usa backoff exponencial: 10, 20, 40, 80, 160 segundos
+     * Intentos (incluye los release() por locks de AccountTree/DeviceService).
+     * No se reintenta por error: el scheduler despacha uno nuevo cada 30s.
      */
-    public $backoff = [10, 20, 40, 80, 160];
+    public $tries = 3;
+
+    public $failOnTimeout = true;
+
+    /**
+     * El lock de unicidad expira solo si el job muere sin liberarlo.
+     */
+    public $uniqueFor = 300;
 
     public function __construct()
     {
         $this->onQueue('web-services');
     }
 
-    /**
-     * Determina si el job debería ser reintentado
-     *
-     * @param \Throwable $exception
-     * @return bool
-     */
-    public function retryUntil()
+    public function uniqueVia()
     {
-        // Reintentar hasta 5 minutos
-        return now()->addMinutes(5);
+        return Cache::store('redis');
     }
 
     public function handle()
@@ -108,11 +116,21 @@ class ProcessUnitsJob implements ShouldQueue
             // Inicializar el resultado con la estructura correcta
             $result = ['code' => 0, 'data' => []];
 
-            foreach ($chunks as $chunk) {
-                $imeis = implode(',', array_map('intval', array_values($chunk)));
+            // Sin token válido no se hace ninguna petición a IOPGPS
+            if (!app(AuthTokenService::class)->getAccessToken()) {
+                Log::error('ProcessUnitsJob cancelado: no hay accessToken válido de IOPGPS.');
+                return;
+            }
 
+            foreach ($chunks as $chunk) {
                 $partialResult = $this->deviceStatusService->fetchDeviceStatus($chunk);
                 Log::info('Procesando chunk de ' . count($chunk) . ' dispositivos');
+
+                // Si el token fue rechazado y no se pudo renovar, no seguir con los demás chunks
+                if (!empty($partialResult['token_error'])) {
+                    Log::error('ProcessUnitsJob detenido: token IOPGPS inválido.');
+                    return;
+                }
 
                 // Verificar si partialResult tiene datos antes de intentar fusionarlos
                 if (!empty($partialResult['data'])) {

@@ -17,9 +17,18 @@ class SendToSutranJob implements ShouldQueue
 
     protected $units;
 
+    /**
+     * Sin reintentos: las posiciones viejas no se reenvían, el siguiente ciclo
+     * (cada 30s) manda datos nuevos. Debe ser menor que retry_after (300s).
+     */
+    public $tries = 1;
+    public $timeout = 120;
+    public $failOnTimeout = true;
+
     public function __construct(array $units)
     {
         $this->units = $units;
+        $this->onQueue('sutran');
     }
 
     public function handle()

@@ -146,7 +146,7 @@ return [
         'sidersales' => [
             'driver' => 'daily',
             'path' => storage_path('logs/sidersales.log'),
-            'level' => 'info',
+            'level' => env('LOG_SIDERSALES_LEVEL', 'info'), // 'debug' para ver request/response completos
             'days' => 90,
             'replace_placeholders' => true,
         ],

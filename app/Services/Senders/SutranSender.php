@@ -7,6 +7,8 @@ use App\Models\Devices;
 use GuzzleHttp\Client;
 use App\Services\LogService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 
 
@@ -28,7 +30,11 @@ class SutranSender implements UnitSenderInterface
         $token = $this->config->servicios['sutran']['token'];
 
         try {
-            $client = new Client(['verify' => false]);
+            $client = new Client([
+                'verify' => false,
+                'connect_timeout' => 5,
+                'timeout' => 20,
+            ]);
             $response = $client->request('POST', $url, [
                 'headers' => [
                     'access-token' => $token,
@@ -59,6 +65,13 @@ class SutranSender implements UnitSenderInterface
                     null
                 );
             }
+        } catch (ConnectException $e) {
+            // Timeout o error de conexión: no hay respuesta HTTP
+            Log::error('Error de conexión con Sutran', [
+                'url' => $url,
+                'tramas' => count($tramas),
+                'message' => $e->getMessage(),
+            ]);
         }
     }
 

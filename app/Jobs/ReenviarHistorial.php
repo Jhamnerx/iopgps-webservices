@@ -11,6 +11,7 @@ use App\Models\Devices;
 use Gpswox\Resources\Device;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Services\Api\DeviceHistoryService;
@@ -19,17 +20,33 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 
-class ReenviarHistorial implements ShouldQueue
+/**
+ * Único por IMEI: mientras haya un reenvío pendiente o en ejecución para un
+ * dispositivo, los nuevos dispatch se descartan (antes se encolaba uno nuevo
+ * cada 30s por dispositivo hasta que last_update se actualizaba).
+ */
+class ReenviarHistorial implements ShouldQueue, ShouldBeUnique
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $deviceId;
     public $lastUpdate;
     public $now;
-    public $timeout = 300; // 5 minutos (corregido a 300 segundos)
+    public $timeout = 240; // Menor que retry_after (300s) para evitar ejecuciones duplicadas
     public $tries = 3; // Número de intentos
     public $backoff = 60; // Esperar 60 segundos entre reintentos
+    public $uniqueFor = 900; // El lock expira solo si el job muere sin liberarlo
     protected DeviceHistoryService $deviceHistoryService;
+
+    public function uniqueId(): string
+    {
+        return (string) $this->deviceId;
+    }
+
+    public function uniqueVia()
+    {
+        return Cache::store('redis');
+    }
 
     /**
      * Create a new job instance.
@@ -74,7 +91,7 @@ class ReenviarHistorial implements ShouldQueue
 
         $tramas = $this->format($posiciones, 'Devices');
 
-        $url = "https://prod.osinergmin-agent-2021.com/api/v1/trama";
+        $url = "https://pmgo.osinergmin.gob.pe/api-gps-ingesta/api/v1/trama";
 
         $sender = new OsinergminSender();
         $sender->send($tramas, $url);

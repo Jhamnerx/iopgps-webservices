@@ -6,10 +6,16 @@ use Carbon\Carbon;
 use App\Models\Devices;
 use App\Jobs\ReenviarHistorial;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 
 
 class Processor implements UnitProcessorInterface
 {
+    /**
+     * Segundos mínimos entre reenvíos de historial del mismo dispositivo.
+     */
+    protected const REENVIO_COOLDOWN = 300;
+
     public function processUnits($units): array
     {
         $result = [
@@ -62,7 +68,12 @@ class Processor implements UnitProcessorInterface
                     // Procesar para Osinergmin
                     if ($device->services['osinergmin']['active'] ?? false) {
 
-                        if ($deviceLastUpdate->diffInMinutes($deviceTime) > 3) {
+                        // last_update se actualiza recién cuando Osinergmin acepta el envío, así que el
+                        // hueco se detecta en varios ciclos seguidos: máximo un reenvío cada 5 min por equipo
+                        if (
+                            $deviceLastUpdate->diffInMinutes($deviceTime) > 3
+                            && Cache::store('redis')->add('iopgps_reenvio_cooldown:' . $unit['imei'], 1, self::REENVIO_COOLDOWN)
+                        ) {
                             ReenviarHistorial::dispatch($unit['imei'], $deviceLastUpdate->format('Y-m-d H:i:s'), $deviceTime->format('Y-m-d H:i:s'));
                         }
 
